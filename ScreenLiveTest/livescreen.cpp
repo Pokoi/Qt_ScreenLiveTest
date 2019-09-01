@@ -10,6 +10,7 @@
 #include <QMessageBox>
 #include <QBitmap>
 #include <QPainter>
+#include <QColor>
 
 LiveScreen::LiveScreen(QWidget *parent) :
     QWidget(parent),
@@ -31,9 +32,12 @@ LiveScreen::LiveScreen(QWidget *parent) :
      QGroupBox *group = new QGroupBox(tr("Options"), this);
      screenshot_button = new QPushButton(tr("Screenshot"), group);
          connect(screenshot_button, &QPushButton::clicked, this, &LiveScreen::save_screenshot);
+     recolor_button = new QCheckBox(tr("Recolor"), group);
+        connect(recolor_button, &QCheckBox::clicked, this, &LiveScreen::toggle_recolor);
 
      QGridLayout *options_GroupBox_layout = new QGridLayout(group);
          options_GroupBox_layout->addWidget(screenshot_button, 0, 1);
+         options_GroupBox_layout->addWidget(recolor_button, 0, 2);
 
 
     mainLayout->addWidget(group);
@@ -86,12 +90,31 @@ void LiveScreen::save_screenshot()
 void LiveScreen::capture_screen()
 {
     original_pixmap = screen -> grabWindow(0);
-    resize_livescreen_label();
+}
+
+void LiveScreen::recolor_image()
+{
+    // code from
+    // https://www.qtcentre.org/threads/48211-How-to-change-QPixmap-color-from-black-to-red?p=300215#post300215
+    QImage tmp = original_pixmap.toImage();
+
+    QColor new_color = QColor(255, 0, 0, 255);
+    QColor old_color = QColor(255, 255, 255, 255);
+
+    for(int y = 0; y < tmp.height(); y++)
+      for(int x= 0; x < tmp.width(); x++)
+          if(tmp.pixelColor(x,y) == old_color) tmp.setPixelColor(x,y,new_color);
+
+    original_pixmap = QPixmap::fromImage(tmp);
 }
 
 void LiveScreen::update()
 {
     capture_screen();
+
+    if(need_to_recolor) recolor_image();
+
+    resize_livescreen_label();
 }
 
 LiveScreen::~LiveScreen()
