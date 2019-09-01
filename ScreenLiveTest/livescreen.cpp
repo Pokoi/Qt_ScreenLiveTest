@@ -1,16 +1,5 @@
 #include "livescreen.h"
 #include "ui_widget.h"
-#include <QHBoxLayout>
-#include <QScreen>
-#include <QWindow>
-#include <QStandardPaths>
-#include <QDir>
-#include <QFileDialog>
-#include <QImageWriter>
-#include <QMessageBox>
-#include <QBitmap>
-#include <QPainter>
-#include <QColor>
 
 LiveScreen::LiveScreen(QWidget *parent) :
     QWidget(parent),

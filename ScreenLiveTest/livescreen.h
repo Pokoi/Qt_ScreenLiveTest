@@ -9,6 +9,16 @@
 #include <QGroupBox>
 #include <QScreen>
 #include <QCheckBox>
+#include <QHBoxLayout>
+#include <QWindow>
+#include <QStandardPaths>
+#include <QDir>
+#include <QFileDialog>
+#include <QImageWriter>
+#include <QMessageBox>
+#include <QBitmap>
+#include <QPainter>
+#include <QColor>
 
 namespace Ui {
 class Widget;
@@ -28,13 +38,13 @@ protected:
 private slots:
     void update();
     void save_screenshot();
+    void toggle_recolor(){ need_to_recolor = !need_to_recolor;}
 
 
 private:
     void resize_livescreen_label();
     void capture_screen();
     void recolor_image();
-    void toggle_recolor(){ need_to_recolor = !need_to_recolor;}
 
     Ui::Widget* ui;
 
