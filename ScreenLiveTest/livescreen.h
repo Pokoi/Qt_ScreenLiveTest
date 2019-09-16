@@ -19,6 +19,7 @@
 #include <QBitmap>
 #include <QPainter>
 #include <QColor>
+#include "recolor.h"
 
 namespace Ui {
 class Widget;
@@ -36,26 +37,27 @@ protected:
     void resizeEvent(QResizeEvent* event) override;
 
 private slots:
-    void update();
+    //void update();
     void save_screenshot();
-    void toggle_recolor(){ need_to_recolor = !need_to_recolor;}
+    //void toggle_recolor(){ need_to_recolor = !need_to_recolor;}
 
 
 private:
+    void initialize_interface();
     void resize_livescreen_label();
-    void capture_screen();
-    void recolor_image();
+    //void capture_screen();
 
     Ui::Widget* ui;
 
     QPixmap original_pixmap;
-    QTimer* timer;
+    //QTimer* timer;
     QLabel* livescreen_label;
     QPushButton* screenshot_button;
     QCheckBox* recolor_button;
     QScreen* screen;
     QRect screenGeometry;
-    bool need_to_recolor = false;
+    //bool need_to_recolor = false;
+    //Recolor color_modifier;
 
 };
 

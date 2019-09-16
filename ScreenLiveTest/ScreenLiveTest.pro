@@ -27,10 +27,14 @@ CONFIG += c++11
 
 SOURCES += \
         livescreen.cpp \
-        main.cpp
+        main.cpp \
+        recolor.cpp \
+        screenpreview.cpp
 
 HEADERS += \
-    livescreen.h
+    livescreen.h \
+    recolor.h \
+    screenpreview.h
 
 FORMS += \
         widget.ui

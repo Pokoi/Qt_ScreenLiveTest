@@ -8,13 +8,19 @@ LiveScreen::LiveScreen(QWidget *parent) :
 {
     ui->setupUi(this);
 
+    initialize_interface();
+
+    setWindowTitle(tr("Live Screen"));
+}
+
+void LiveScreen::initialize_interface()
+{
     livescreen_label -> setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
     livescreen_label -> setAlignment (Qt::AlignCenter);
     livescreen_label -> setIndent(0);
 
     QRect screenGeometry = QApplication::desktop()->screenGeometry(this);
         livescreen_label->setMinimumSize(screenGeometry.width() / 4, screenGeometry.height() / 4);
-
     QVBoxLayout *mainLayout = new QVBoxLayout(this);
         mainLayout->addWidget(livescreen_label);
 
@@ -35,15 +41,6 @@ LiveScreen::LiveScreen(QWidget *parent) :
 
     if(const QWindow *window = windowHandle())screen = window->screen();
     if(!screen) return;
-
-    capture_screen();
-
-    setWindowTitle(tr("Live Screen"));
-
-    timer = new QTimer(this);
-    QObject::connect(timer, SIGNAL(timeout()), this, SLOT(update()));
-    timer -> start(60/1000);
-
 }
 
 void LiveScreen::save_screenshot()
@@ -76,32 +73,12 @@ void LiveScreen::save_screenshot()
         }
 }
 
-void LiveScreen::capture_screen()
-{
-    original_pixmap = screen -> grabWindow(0);
-}
-
-void LiveScreen::recolor_image()
-{
-    // code from
-    // https://www.qtcentre.org/threads/48211-How-to-change-QPixmap-color-from-black-to-red?p=300215#post300215
-    QImage tmp = original_pixmap.toImage();
-
-    QColor new_color = QColor(255, 0, 0, 255);
-    QColor old_color = QColor(255, 255, 255, 255);
-
-    for(int y = 0; y < tmp.height(); y++)
-      for(int x= 0; x < tmp.width(); x++)
-          if(tmp.pixelColor(x,y) == old_color) tmp.setPixelColor(x,y,new_color);
-
-    original_pixmap = QPixmap::fromImage(tmp);
-}
 
 void LiveScreen::update()
 {
     capture_screen();
 
-    if(need_to_recolor) recolor_image();
+    if(need_to_recolor) color_modifier.recolor_image(&original_pixmap);
 
     resize_livescreen_label();
 }
