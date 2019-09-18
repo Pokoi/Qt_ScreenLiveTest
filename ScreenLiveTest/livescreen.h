@@ -57,6 +57,9 @@ public:
     ~LiveScreen() override;
 
     QPixmap & get_preview_pixmap() { return original_pixmap;}
+    QScreen * get_screen() const {return screen;}
+    void resize_livescreen_label();
+    static LiveScreen* get_instance(){if(instance == 0) instance = new LiveScreen(); return instance;};
 
 protected:
     void resizeEvent(QResizeEvent* event) override;
@@ -68,8 +71,8 @@ private slots:
 
 private:
     void initialize_interface();
-    void resize_livescreen_label();
 
+    static LiveScreen * instance;
     Ui::Widget* ui;
     QPixmap original_pixmap;
     QLabel* livescreen_label;
@@ -77,8 +80,6 @@ private:
     QCheckBox* recolor_button;
     QScreen* screen;
     QRect screenGeometry;
-
-
 
 };
 

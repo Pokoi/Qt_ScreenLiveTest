@@ -24,42 +24,36 @@
 #include "livescreen.h"
 #include "screenpreview.h"
 #include <QApplication>
+#include <QTimer>
+#include <QObject>
 
-ScreenPreview sp;
-Recolor r;
-LiveScreen w;
+
+Recolor * re;
+ScreenPreview * sp;
+LiveScreen * w;
+
+
+void update()
+{
+    if(sp->get_capture_mode()==ScreenPreview::screen) sp->capture_screen(w->get_screen());
+    if(re->get_need_to_recolor()) re->recolor_image(&w->get_preview_pixmap());
+    w->resize_livescreen_label();
+}
 
 
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
+    w  = new LiveScreen();
+    sp = new ScreenPreview(&w->get_preview_pixmap());
+    re = new Recolor();
 
 
-    sp = ScreenPreview(&w.get_preview_pixmap());
-    r = Recolor();
+    w->show();
 
-
-    w.show();
-
-
-    /*
-     *
-     *  timer = new QTimer(this);
-        connect(timer, SIGNAL(timeout()), this, SLOT(update()));
-        timer -> start(60/1000);
-     *
-     *
-     */
-
+    QTimer timer;
+    QObject::connect(&timer, &QTimer::timeout, update);
+    timer.start(0);
 
     return a.exec();
-}
-
-void update()
-{
-    sp.capture_screen();
-
-    if(r.get_need_to_recolor()) r.recolor_image(&w.get_preview_pixmap());
-
-    resize_livescreen_label();
 }

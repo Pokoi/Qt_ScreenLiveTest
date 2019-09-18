@@ -54,10 +54,12 @@ OBJECTS_DIR   = ./
 
 SOURCES       = ../ScreenLiveTest/livescreen.cpp \
 		../ScreenLiveTest/main.cpp \
-		../ScreenLiveTest/recolor.cpp moc_livescreen.cpp
+		../ScreenLiveTest/recolor.cpp \
+		../ScreenLiveTest/screenpreview.cpp moc_livescreen.cpp
 OBJECTS       = livescreen.o \
 		main.o \
 		recolor.o \
+		screenpreview.o \
 		moc_livescreen.o
 DIST          = ../../Qt/5.13.0/clang_64/mkspecs/features/spec_pre.prf \
 		../../Qt/5.13.0/clang_64/mkspecs/qdevice.pri \
@@ -225,6 +227,7 @@ DIST          = ../../Qt/5.13.0/clang_64/mkspecs/features/spec_pre.prf \
 		../../Qt/5.13.0/clang_64/mkspecs/features/qt_config.prf \
 		../../Qt/5.13.0/clang_64/mkspecs/macx-clang/qmake.conf \
 		../../Qt/5.13.0/clang_64/mkspecs/features/spec_post.prf \
+		../ScreenLiveTest/.qmake.stash \
 		../../Qt/5.13.0/clang_64/mkspecs/features/exclusive_builds.prf \
 		../../Qt/5.13.0/clang_64/mkspecs/features/mac/sdk.prf \
 		../../Qt/5.13.0/clang_64/mkspecs/features/toolchain.prf \
@@ -253,9 +256,11 @@ DIST          = ../../Qt/5.13.0/clang_64/mkspecs/features/spec_pre.prf \
 		../../Qt/5.13.0/clang_64/mkspecs/features/yacc.prf \
 		../../Qt/5.13.0/clang_64/mkspecs/features/lex.prf \
 		../ScreenLiveTest/ScreenLiveTest.pro ../ScreenLiveTest/livescreen.h \
-		../ScreenLiveTest/recolor.h ../ScreenLiveTest/livescreen.cpp \
+		../ScreenLiveTest/recolor.h \
+		../ScreenLiveTest/screenpreview.h ../ScreenLiveTest/livescreen.cpp \
 		../ScreenLiveTest/main.cpp \
-		../ScreenLiveTest/recolor.cpp
+		../ScreenLiveTest/recolor.cpp \
+		../ScreenLiveTest/screenpreview.cpp
 QMAKE_TARGET  = ScreenLiveTest
 DESTDIR       = 
 TARGET        = ScreenLiveTest.app/Contents/MacOS/ScreenLiveTest
@@ -444,6 +449,7 @@ Makefile: ../ScreenLiveTest/ScreenLiveTest.pro ../../Qt/5.13.0/clang_64/mkspecs/
 		../../Qt/5.13.0/clang_64/mkspecs/features/qt_config.prf \
 		../../Qt/5.13.0/clang_64/mkspecs/macx-clang/qmake.conf \
 		../../Qt/5.13.0/clang_64/mkspecs/features/spec_post.prf \
+		.qmake.stash \
 		../../Qt/5.13.0/clang_64/mkspecs/features/exclusive_builds.prf \
 		../../Qt/5.13.0/clang_64/mkspecs/features/mac/sdk.prf \
 		../../Qt/5.13.0/clang_64/mkspecs/features/toolchain.prf \
@@ -642,6 +648,7 @@ Makefile: ../ScreenLiveTest/ScreenLiveTest.pro ../../Qt/5.13.0/clang_64/mkspecs/
 ../../Qt/5.13.0/clang_64/mkspecs/features/qt_config.prf:
 ../../Qt/5.13.0/clang_64/mkspecs/macx-clang/qmake.conf:
 ../../Qt/5.13.0/clang_64/mkspecs/features/spec_post.prf:
+.qmake.stash:
 ../../Qt/5.13.0/clang_64/mkspecs/features/exclusive_builds.prf:
 ../../Qt/5.13.0/clang_64/mkspecs/features/mac/sdk.prf:
 ../../Qt/5.13.0/clang_64/mkspecs/features/toolchain.prf:
@@ -689,7 +696,7 @@ ScreenLiveTest.app/Contents/Resources/empty.lproj:
 ScreenLiveTest.app/Contents/Info.plist: 
 	@test -d ScreenLiveTest.app/Contents || mkdir -p ScreenLiveTest.app/Contents
 	@$(DEL_FILE) ScreenLiveTest.app/Contents/Info.plist
-	@sed -e "s,@SHORT_VERSION@,1.0,g" -e "s,\$${QMAKE_SHORT_VERSION},1.0,g" -e "s,@FULL_VERSION@,1.0.0,g" -e "s,\$${QMAKE_FULL_VERSION},1.0.0,g" -e "s,@TYPEINFO@,????,g" -e "s,\$${QMAKE_PKGINFO_TYPEINFO},????,g" -e "s,@BUNDLEIDENTIFIER@,com.yourcompany.ScreenLiveTest,g" -e "s,\$${PRODUCT_BUNDLE_IDENTIFIER},com.yourcompany.ScreenLiveTest,g" -e "s,\$${MACOSX_DEPLOYMENT_TARGET},10.12,g" -e "s,\$${IPHONEOS_DEPLOYMENT_TARGET},,g" -e "s,\$${TVOS_DEPLOYMENT_TARGET},,g" -e "s,\$${WATCHOS_DEPLOYMENT_TARGET},,g" -e "s,@ICON@,,g" -e "s,\$${ASSETCATALOG_COMPILER_APPICON_NAME},,g" -e "s,@EXECUTABLE@,ScreenLiveTest,g" -e "s,@LIBRARY@,ScreenLiveTest,g" -e "s,\$${EXECUTABLE_NAME},ScreenLiveTest,g" -e "s,@TYPEINFO@,????,g" -e "s,\$${QMAKE_PKGINFO_TYPEINFO},????,g" ../../Qt/5.13.0/clang_64/mkspecs/macx-clang/Info.plist.app >ScreenLiveTest.app/Contents/Info.plist
+	@sed -e "s,@SHORT_VERSION@,1.0,g" -e "s,\$${QMAKE_SHORT_VERSION},1.0,g" -e "s,@FULL_VERSION@,1.0.0,g" -e "s,\$${QMAKE_FULL_VERSION},1.0.0,g" -e "s,@TYPEINFO@,????,g" -e "s,\$${QMAKE_PKGINFO_TYPEINFO},????,g" -e "s,@BUNDLEIDENTIFIER@,pokoidev.ScreenLiveTest,g" -e "s,\$${PRODUCT_BUNDLE_IDENTIFIER},pokoidev.ScreenLiveTest,g" -e "s,\$${MACOSX_DEPLOYMENT_TARGET},10.12,g" -e "s,\$${IPHONEOS_DEPLOYMENT_TARGET},,g" -e "s,\$${TVOS_DEPLOYMENT_TARGET},,g" -e "s,\$${WATCHOS_DEPLOYMENT_TARGET},,g" -e "s,@ICON@,,g" -e "s,\$${ASSETCATALOG_COMPILER_APPICON_NAME},,g" -e "s,@EXECUTABLE@,ScreenLiveTest,g" -e "s,@LIBRARY@,ScreenLiveTest,g" -e "s,\$${EXECUTABLE_NAME},ScreenLiveTest,g" -e "s,@TYPEINFO@,????,g" -e "s,\$${QMAKE_PKGINFO_TYPEINFO},????,g" ../../Qt/5.13.0/clang_64/mkspecs/macx-clang/Info.plist.app >ScreenLiveTest.app/Contents/Info.plist
 
 all: Makefile \
 		ScreenLiveTest.app/Contents/PkgInfo \
@@ -703,8 +710,8 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents ../../Qt/5.13.0/clang_64/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../ScreenLiveTest/livescreen.h ../ScreenLiveTest/recolor.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../ScreenLiveTest/livescreen.cpp ../ScreenLiveTest/main.cpp ../ScreenLiveTest/recolor.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../ScreenLiveTest/livescreen.h ../ScreenLiveTest/recolor.h ../ScreenLiveTest/screenpreview.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../ScreenLiveTest/livescreen.cpp ../ScreenLiveTest/main.cpp ../ScreenLiveTest/recolor.cpp ../ScreenLiveTest/screenpreview.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents ../ScreenLiveTest/widget.ui $(DISTDIR)/
 
 
@@ -715,6 +722,7 @@ clean: compiler_clean
 
 distclean: clean 
 	-$(DEL_FILE) -r ScreenLiveTest.app
+	-$(DEL_FILE) .qmake.stash
 	-$(DEL_FILE) Makefile
 
 
@@ -892,8 +900,11 @@ main.o: ../ScreenLiveTest/main.cpp ../ScreenLiveTest/livescreen.h \
 		../ScreenLiveTest/recolor.h \
 		../../Qt/5.13.0/clang_64/lib/QtGui.framework/Headers/QPixmap \
 		../../Qt/5.13.0/clang_64/lib/QtGui.framework/Headers/qpixmap.h \
+		../ScreenLiveTest/screenpreview.h \
 		../../Qt/5.13.0/clang_64/lib/QtWidgets.framework/Headers/QApplication \
-		../../Qt/5.13.0/clang_64/lib/QtWidgets.framework/Headers/qapplication.h
+		../../Qt/5.13.0/clang_64/lib/QtWidgets.framework/Headers/qapplication.h \
+		../../Qt/5.13.0/clang_64/lib/QtCore.framework/Headers/QObject \
+		../../Qt/5.13.0/clang_64/lib/QtCore.framework/Headers/qobject.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../ScreenLiveTest/main.cpp
 
 recolor.o: ../ScreenLiveTest/recolor.cpp ../ScreenLiveTest/recolor.h \
@@ -902,6 +913,13 @@ recolor.o: ../ScreenLiveTest/recolor.cpp ../ScreenLiveTest/recolor.h \
 		../../Qt/5.13.0/clang_64/lib/QtGui.framework/Headers/QPixmap \
 		../../Qt/5.13.0/clang_64/lib/QtGui.framework/Headers/qpixmap.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o recolor.o ../ScreenLiveTest/recolor.cpp
+
+screenpreview.o: ../ScreenLiveTest/screenpreview.cpp ../ScreenLiveTest/screenpreview.h \
+		../../Qt/5.13.0/clang_64/lib/QtGui.framework/Headers/QPixmap \
+		../../Qt/5.13.0/clang_64/lib/QtGui.framework/Headers/qpixmap.h \
+		../../Qt/5.13.0/clang_64/lib/QtGui.framework/Headers/QScreen \
+		../../Qt/5.13.0/clang_64/lib/QtGui.framework/Headers/qscreen.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o screenpreview.o ../ScreenLiveTest/screenpreview.cpp
 
 moc_livescreen.o: moc_livescreen.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_livescreen.o moc_livescreen.cpp

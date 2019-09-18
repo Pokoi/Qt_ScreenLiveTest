@@ -52,7 +52,7 @@ private:
         //TODO
     };
 
-    bool need_to_recolor;
+    static bool need_to_recolor;
 
 public:
 
@@ -60,10 +60,7 @@ public:
 
     void recolor_image(QPixmap* to_recolor);
     const bool & get_need_to_recolor() const { return  need_to_recolor;}
-
-private:
-
-    void toggle_recolor(){ need_to_recolor = !need_to_recolor;}
+    static void toggle_recolor(){ need_to_recolor = !need_to_recolor;}
 
 };
 

@@ -23,7 +23,11 @@
 
 #include "screenpreview.h"
 
-ScreenPreview::ScreenPreview(QPixmap* original_pixmap) : preview_pixmap (original_pixmap)
+ScreenPreview::ScreenPreview(){}
+
+ScreenPreview::ScreenPreview(QPixmap* original_pixmap) :
+    preview_pixmap (original_pixmap),
+    current_capture_mode (screen)
 {}
 
 void ScreenPreview::capture_screen(QScreen* screen)

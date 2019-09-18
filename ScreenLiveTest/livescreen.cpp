@@ -51,7 +51,7 @@ void LiveScreen::initialize_interface()
      screenshot_button = new QPushButton(tr("Screenshot"), group);
          connect(screenshot_button, &QPushButton::clicked, this, &LiveScreen::save_screenshot);
      recolor_button = new QCheckBox(tr("Recolor"), group);
-        connect(recolor_button, &QCheckBox::clicked, this, &LiveScreen::toggle_recolor);
+        connect(recolor_button, &QCheckBox::clicked, this, &Recolor::toggle_recolor);
 
      QGridLayout *options_GroupBox_layout = new QGridLayout(group);
          options_GroupBox_layout->addWidget(screenshot_button, 0, 1);
@@ -94,16 +94,6 @@ void LiveScreen::save_screenshot()
             QMessageBox::warning(this, tr("Save Error"), tr("The image could not be saved to \"%1\".")
                                  .arg(QDir::toNativeSeparators(fileName)));
         }
-}
-
-
-void LiveScreen::update()
-{
-    capture_screen();
-
-    if(need_to_recolor) color_modifier.recolor_image(&original_pixmap);
-
-    resize_livescreen_label();
 }
 
 LiveScreen::~LiveScreen()

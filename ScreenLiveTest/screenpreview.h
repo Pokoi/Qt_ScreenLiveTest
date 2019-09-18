@@ -48,11 +48,12 @@ private:
 
 public:
 
+    ScreenPreview();
     ScreenPreview(QPixmap* original_pixmap);
     void capture_screen(QScreen* screen);
 
     capture_modes get_capture_mode() const   { return current_capture_mode;}
-    void set_capture_mode (capture_modes cm) {  current_capture_mode == cm;}
+    void set_capture_mode (capture_modes cm) {  current_capture_mode = cm;}
 
 private:
 
