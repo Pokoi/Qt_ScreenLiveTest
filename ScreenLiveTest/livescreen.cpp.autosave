@@ -97,15 +97,6 @@ void LiveScreen::save_screenshot()
 }
 
 
-void LiveScreen::update()
-{
-    capture_screen();
-
-    if(need_to_recolor) color_modifier.recolor_image(&original_pixmap);
-
-    resize_livescreen_label();
-}
-
 LiveScreen::~LiveScreen()
 {
     delete ui;

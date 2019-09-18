@@ -1,3 +1,26 @@
+//
+// File: livescreen.h
+// Project: Vispurple
+// Description : Vispurple is an open source cross-platform desktop simulator to evaluate
+// the visual accessibility of any graphic element for any visual perception condition
+// Author: Jesús Fermín Villar Ramírez (pokoidev)
+
+// © Copyright (C) 2019  pokoidev
+
+// This program is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+
+// You should have received a copy of the GNU General Public License
+// along with this program.  If not, see <https://www.gnu.org/licenses/>.
+//
+
 #ifndef WIDGET_H
 #define WIDGET_H
 
@@ -33,31 +56,29 @@ public:
     explicit LiveScreen(QWidget* parent = nullptr);
     ~LiveScreen() override;
 
+    QPixmap & get_preview_pixmap() { return original_pixmap;}
+
 protected:
     void resizeEvent(QResizeEvent* event) override;
 
 private slots:
-    //void update();
     void save_screenshot();
-    //void toggle_recolor(){ need_to_recolor = !need_to_recolor;}
+
 
 
 private:
     void initialize_interface();
     void resize_livescreen_label();
-    //void capture_screen();
 
     Ui::Widget* ui;
-
     QPixmap original_pixmap;
-    //QTimer* timer;
     QLabel* livescreen_label;
     QPushButton* screenshot_button;
     QCheckBox* recolor_button;
     QScreen* screen;
     QRect screenGeometry;
-    //bool need_to_recolor = false;
-    //Recolor color_modifier;
+
+
 
 };
 
