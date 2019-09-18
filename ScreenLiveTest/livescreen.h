@@ -42,7 +42,7 @@
 #include <QBitmap>
 #include <QPainter>
 #include <QColor>
-#include "recolor.h"
+
 
 namespace Ui {
 class Widget;
@@ -52,35 +52,39 @@ class LiveScreen : public QWidget
 {
     Q_OBJECT
 
+private:
+
+    static LiveScreen * instance;
+
+    Ui::Widget*  ui;
+    QPixmap      original_pixmap;
+    QLabel*      livescreen_label;
+    QPushButton* screenshot_button;
+    QCheckBox*   recolor_button;
+    QScreen*     screen;
+    QRect        screenGeometry;
+    bool         need_to_recolor;
+
+
 public:
     explicit LiveScreen(QWidget* parent = nullptr);
     ~LiveScreen() override;
 
     QPixmap & get_preview_pixmap() { return original_pixmap;}
-    QScreen * get_screen() const {return screen;}
+    QScreen * get_screen() const   { return screen;}
+    const bool & get_need_to_recolor() const { return  need_to_recolor;}
     void resize_livescreen_label();
-    static LiveScreen* get_instance(){if(instance == 0) instance = new LiveScreen(); return instance;};
+    static LiveScreen* get_instance(){if(instance == 0) instance = new LiveScreen(); return instance;}
 
 protected:
     void resizeEvent(QResizeEvent* event) override;
 
 private slots:
     void save_screenshot();
-
-
+    void toggle_recolor(){need_to_recolor = !need_to_recolor;}
 
 private:
     void initialize_interface();
-
-    static LiveScreen * instance;
-    Ui::Widget* ui;
-    QPixmap original_pixmap;
-    QLabel* livescreen_label;
-    QPushButton* screenshot_button;
-    QCheckBox* recolor_button;
-    QScreen* screen;
-    QRect screenGeometry;
-
 };
 
 #endif // WIDGET_H

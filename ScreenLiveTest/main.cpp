@@ -23,20 +23,21 @@
 
 #include "livescreen.h"
 #include "screenpreview.h"
+#include "recolor.h"
 #include <QApplication>
 #include <QTimer>
 #include <QObject>
 
 
-Recolor * re;
+Recolor       * re;
 ScreenPreview * sp;
-LiveScreen * w;
+LiveScreen    * w;
 
 
 void update()
 {
     if(sp->get_capture_mode()==ScreenPreview::screen) sp->capture_screen(w->get_screen());
-    if(re->get_need_to_recolor()) re->recolor_image(&w->get_preview_pixmap());
+    if(w->get_need_to_recolor()) re->recolor_image(&w->get_preview_pixmap());
     w->resize_livescreen_label();
 }
 

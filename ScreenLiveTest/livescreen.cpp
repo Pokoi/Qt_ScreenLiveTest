@@ -51,7 +51,7 @@ void LiveScreen::initialize_interface()
      screenshot_button = new QPushButton(tr("Screenshot"), group);
          connect(screenshot_button, &QPushButton::clicked, this, &LiveScreen::save_screenshot);
      recolor_button = new QCheckBox(tr("Recolor"), group);
-        connect(recolor_button, &QCheckBox::clicked, this, &Recolor::toggle_recolor);
+        connect(recolor_button, &QCheckBox::clicked, this, &LiveScreen::toggle_recolor);
 
      QGridLayout *options_GroupBox_layout = new QGridLayout(group);
          options_GroupBox_layout->addWidget(screenshot_button, 0, 1);
