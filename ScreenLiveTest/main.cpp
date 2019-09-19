@@ -21,7 +21,7 @@
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 //
 
-#include "livescreen.h"
+#include "mainwindow.h"
 #include "screenpreview.h"
 #include "recolor.h"
 #include <QApplication>
@@ -31,7 +31,7 @@
 
 Recolor       * re;
 ScreenPreview * sp;
-LiveScreen    * w;
+MainWindow    * w;
 
 
 void update()
@@ -45,7 +45,7 @@ void update()
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-    w  = new LiveScreen();
+    w  = new MainWindow();
     sp = new ScreenPreview(&w->get_preview_pixmap());
     re = new Recolor();
 

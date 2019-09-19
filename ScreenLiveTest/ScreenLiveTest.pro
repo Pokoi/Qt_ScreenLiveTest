@@ -26,13 +26,13 @@ DEFINES += QT_DEPRECATED_WARNINGS
 CONFIG += c++11
 
 SOURCES += \
-        livescreen.cpp \
         main.cpp \
+        mainwindow.cpp \
         recolor.cpp \
         screenpreview.cpp
 
 HEADERS += \
-    livescreen.h \
+    mainwindow.h \
     recolor.h \
     screenpreview.h
 

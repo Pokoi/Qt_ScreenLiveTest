@@ -21,10 +21,10 @@
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 //
 
-#include "livescreen.h"
+#include "mainwindow.h"
 #include "ui_widget.h"
 
-LiveScreen::LiveScreen(QWidget *parent) :
+MainWindow::MainWindow(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::Widget),
     livescreen_label(new QLabel(this))
@@ -36,7 +36,7 @@ LiveScreen::LiveScreen(QWidget *parent) :
     setWindowTitle(tr("Live Screen"));
 }
 
-void LiveScreen::initialize_interface()
+void MainWindow::initialize_interface()
 {
     livescreen_label -> setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
     livescreen_label -> setAlignment (Qt::AlignCenter);
@@ -49,9 +49,9 @@ void LiveScreen::initialize_interface()
 
      QGroupBox *group = new QGroupBox(tr("Options"), this);
      screenshot_button = new QPushButton(tr("Screenshot"), group);
-         connect(screenshot_button, &QPushButton::clicked, this, &LiveScreen::save_screenshot);
+         connect(screenshot_button, &QPushButton::clicked, this, &MainWindow::save_screenshot);
      recolor_button = new QCheckBox(tr("Recolor"), group);
-        connect(recolor_button, &QCheckBox::clicked, this, &LiveScreen::toggle_recolor);
+        connect(recolor_button, &QCheckBox::clicked, this, &MainWindow::toggle_recolor);
 
      QGridLayout *options_GroupBox_layout = new QGridLayout(group);
          options_GroupBox_layout->addWidget(screenshot_button, 0, 1);
@@ -66,7 +66,7 @@ void LiveScreen::initialize_interface()
     if(!screen) return;
 }
 
-void LiveScreen::save_screenshot()
+void MainWindow::save_screenshot()
 {
     QPixmap pixmap_to_save = original_pixmap;
 
@@ -96,12 +96,12 @@ void LiveScreen::save_screenshot()
         }
 }
 
-LiveScreen::~LiveScreen()
+MainWindow::~MainWindow()
 {
     delete ui;
 }
 
-void LiveScreen::resizeEvent(QResizeEvent* event)
+void MainWindow::resizeEvent(QResizeEvent* event)
 {
     QSize scaledSize = original_pixmap.size();
     scaledSize.scale(livescreen_label->size(), Qt::KeepAspectRatioByExpanding);
@@ -109,7 +109,7 @@ void LiveScreen::resizeEvent(QResizeEvent* event)
     if(!livescreen_label -> pixmap() || scaledSize != livescreen_label -> pixmap() -> size()) resize_livescreen_label();
 }
 
-void LiveScreen::resize_livescreen_label()
+void MainWindow::resize_livescreen_label()
 {
     livescreen_label->setPixmap(original_pixmap.scaled(livescreen_label->size(), Qt::KeepAspectRatioByExpanding));
 }

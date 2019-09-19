@@ -48,13 +48,13 @@ namespace Ui {
 class Widget;
 }
 
-class LiveScreen : public QWidget
+class MainWindow : public QWidget
 {
     Q_OBJECT
 
 private:
 
-    static LiveScreen * instance;
+    static MainWindow * instance;
 
     Ui::Widget*  ui;
     QPixmap      original_pixmap;
@@ -67,14 +67,14 @@ private:
 
 
 public:
-    explicit LiveScreen(QWidget* parent = nullptr);
-    ~LiveScreen() override;
+    explicit MainWindow(QWidget* parent = nullptr);
+    ~MainWindow() override;
 
     QPixmap & get_preview_pixmap() { return original_pixmap;}
     QScreen * get_screen() const   { return screen;}
     const bool & get_need_to_recolor() const { return  need_to_recolor;}
     void resize_livescreen_label();
-    static LiveScreen* get_instance(){if(instance == 0) instance = new LiveScreen(); return instance;}
+    static MainWindow* get_instance(){if(instance == 0) instance = new MainWindow(); return instance;}
 
 protected:
     void resizeEvent(QResizeEvent* event) override;
