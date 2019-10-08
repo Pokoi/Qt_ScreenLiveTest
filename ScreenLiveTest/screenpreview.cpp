@@ -22,20 +22,3 @@
 //
 
 #include "screenpreview.h"
-
-ScreenPreview::ScreenPreview(){}
-
-ScreenPreview::ScreenPreview(QPixmap* original_pixmap) :
-    preview_pixmap (original_pixmap),
-    current_capture_mode (screen)
-{}
-
-void ScreenPreview::capture_screen(QScreen* screen)
-{
-    *preview_pixmap = screen -> grabWindow(0);
-}
-
-void ScreenPreview::capture_window()
-{
-    //TODO Implementation
-}

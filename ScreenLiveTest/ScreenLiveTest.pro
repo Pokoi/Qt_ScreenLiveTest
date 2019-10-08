@@ -29,12 +29,16 @@ SOURCES += \
         main.cpp \
         mainwindow.cpp \
         recolor.cpp \
-        screenpreview.cpp
+        screenpreview.cpp \
+        taskstack.cpp
 
 HEADERS += \
+    blackboard.h \
     mainwindow.h \
     recolor.h \
-    screenpreview.h
+    screenpreview.h \
+    task.h \
+    taskstack.h
 
 FORMS += \
         widget.ui

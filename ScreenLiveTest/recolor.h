@@ -23,8 +23,10 @@
 
 #ifndef RECOLOR_H
 #define RECOLOR_H
+
 #include <QColor>
 #include <QPixmap>
+#include "blackboard.h"
 
 ///
 /// \brief This class allows to modify the colors of a given pixels map
@@ -34,32 +36,14 @@ class Recolor
 
 public:
 
-    enum modes{colorblind_a, colorblind_b, colorblind_c, high_contrast, none};
-    modes current_mode;
+    Recolor() = delete;
+    ~Recolor() = delete;
 
-private:
-
-    struct colorblind_a_changes
-    {
-        //TODO
-    };
-    struct colorblind_b_changes
-    {
-        //TODO
-    };
-    struct colorblind_c_changes
-    {
-        //TODO
-    };
-
-
-
-public:
-
-    Recolor();
-
-    void recolor_image(QPixmap* to_recolor);
-
+    /**
+     * @brief Changes every white pixel in the preview of the region
+     * captured with a red pixel
+     */
+    static void white_to_red();
 
 };
 

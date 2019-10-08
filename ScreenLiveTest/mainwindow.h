@@ -24,13 +24,9 @@
 #ifndef WIDGET_H
 #define WIDGET_H
 
-#include <QWidget>
 #include <QPushButton>
 #include <QDesktopWidget>
-#include <QLabel>
-#include <QTimer>
 #include <QGroupBox>
-#include <QScreen>
 #include <QCheckBox>
 #include <QHBoxLayout>
 #include <QWindow>
@@ -39,9 +35,11 @@
 #include <QFileDialog>
 #include <QImageWriter>
 #include <QMessageBox>
-#include <QBitmap>
-#include <QPainter>
-#include <QColor>
+
+#include "blackboard.h"
+#include "taskstack.h"
+#include "recolor.h"
+#include "screenpreview.h"
 
 
 namespace Ui {
@@ -54,37 +52,80 @@ class MainWindow : public QWidget
 
 private:
 
-    static MainWindow * instance;
+    /**
+     * @brief A pointer to the button that launch the event to
+     * take screenshots
+     */
+    QPushButton *screenshot_button;
+    /**
+     * @brief A pointer to the button that converts the white pixels into
+     * red ones
+     */
+    QCheckBox   *white_to_red_button;
 
-    Ui::Widget*  ui;
-    QPixmap      original_pixmap;
-    QLabel*      livescreen_label;
-    QPushButton* screenshot_button;
-    QCheckBox*   recolor_button;
-    QScreen*     screen;
-    QRect        screenGeometry;
-    bool         need_to_recolor;
+    Ui::Widget  *ui;
 
 
 public:
-    explicit MainWindow(QWidget* parent = nullptr);
-    ~MainWindow() override;
 
-    QPixmap & get_preview_pixmap() { return original_pixmap;}
-    QScreen * get_screen() const   { return screen;}
-    const bool & get_need_to_recolor() const { return  need_to_recolor;}
-    void resize_livescreen_label();
-    static MainWindow* get_instance(){if(instance == 0) instance = new MainWindow(); return instance;}
+    /**
+     * @brief Updates the display of the region captured in the right scale
+     */
+    static void resize_livescreen_label();
+    /**
+     * @brief Gets the global instance to this class
+     * @return
+     */
+    static MainWindow & get_instance()
+    {
+        static MainWindow object;
+        return object;
+    }
 
 protected:
+
+    /**
+     * @brief Override method for the resize event, called when
+     * this window is resized. This event updates the scale of the
+     * pixmap with the preview of the region captured and calls the
+     * resize_livescreen_label method if needed.
+     * @param The resize event
+     */
     void resizeEvent(QResizeEvent* event) override;
 
 private slots:
+
+    /**
+     * @brief Saves the preview of the region captured as an image
+     */
     void save_screenshot();
-    void toggle_recolor(){need_to_recolor = !need_to_recolor;}
+    /**
+     * @brief Creates the task that changes the white color to red in the
+     * task stack.
+     */
+    void toggle_recolor() { TaskStack::Subscribe(new Task(*Recolor::white_to_red)); }
 
 private:
+
+    MainWindow(const MainWindow &) = delete;
+    /**
+     * @brief Creates a new object of this class
+     * @param A pointer to his widget parent. Default value
+     * is nullptr.
+     */
+    explicit MainWindow(QWidget* parent = nullptr);
+
+    /**
+     * @brief Creates the interface elements of this window
+     */
     void initialize_interface();
+    /**
+     * @brief Create the main tasks in the task stack.
+     */
+    void create_main_tasks();
+
+   ~MainWindow() override{ delete ui;}
+
 };
 
 #endif // WIDGET_H

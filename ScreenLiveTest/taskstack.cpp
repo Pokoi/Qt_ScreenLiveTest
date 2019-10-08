@@ -1,5 +1,5 @@
 //
-// File: screenpreview.h
+// File: taskmanager.cpp
 // Project: Vispurple
 // Description : Vispurple is an open source cross-platform desktop simulator to evaluate
 // the visual accessibility of any graphic element for any visual perception condition
@@ -21,32 +21,6 @@
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 //
 
-#ifndef SCREENMANAGER_H
-#define SCREENMANAGER_H
+#include "taskstack.h"
+#include <QTimer>
 
-#include <blackboard.h>
-
-/**
- * @brief This class provides the conversion of the currently
- * selected screen region into a pixels map in order to previewing it
- */
-class ScreenPreview
-{
-
-
-public:
-
-    /**
-     * @brief Updates the pixmap with the preview of the region captured
-     */
-    static void capture_screen()
-    {
-        QPixmap *p;
-        *p = BlackBoard::get_screen()->grabWindow(0);
-
-        BlackBoard::set_pixmap(p);
-    }
-
-};
-
-#endif // SCREENMANAGER_H

@@ -1,5 +1,5 @@
 //
-// File: screenpreview.h
+// File: task.h
 // Project: Vispurple
 // Description : Vispurple is an open source cross-platform desktop simulator to evaluate
 // the visual accessibility of any graphic element for any visual perception condition
@@ -21,32 +21,36 @@
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 //
 
-#ifndef SCREENMANAGER_H
-#define SCREENMANAGER_H
+#ifndef TASK_H
+#define TASK_H
 
-#include <blackboard.h>
 
-/**
- * @brief This class provides the conversion of the currently
- * selected screen region into a pixels map in order to previewing it
- */
-class ScreenPreview
+class Task
 {
-
-
 public:
 
     /**
-     * @brief Updates the pixmap with the preview of the region captured
+     * @brief Creates a new task with a null function pointer
      */
-    static void capture_screen()
-    {
-        QPixmap *p;
-        *p = BlackBoard::get_screen()->grabWindow(0);
+    Task() { f = nullptr;}
+    /**
+     * @brief Creates a new task with a function pointer to the
+     * given void function
+     * @param The void function to pointed
+     */
+    Task(void foo()) : f{foo}{}
+    ~Task() = default;
 
-        BlackBoard::set_pixmap(p);
-    }
+    /**
+     * @brief Execute the function pointed
+     */
+    void Execute() { f(); }
+
+    /**
+     * The function pointer of this
+     */
+    void (*f)();
 
 };
 
-#endif // SCREENMANAGER_H
+#endif // TASK_H

@@ -29,32 +29,12 @@
 #include <QObject>
 
 
-Recolor       * re;
-ScreenPreview * sp;
-MainWindow    * w;
-
-
-void update()
-{
-    if(sp->get_capture_mode()==ScreenPreview::screen) sp->capture_screen(w->get_screen());
-    if(w->get_need_to_recolor()) re->recolor_image(&w->get_preview_pixmap());
-    w->resize_livescreen_label();
-}
-
-
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-    w  = new MainWindow();
-    sp = new ScreenPreview(&w->get_preview_pixmap());
-    re = new Recolor();
+    MainWindow &w = MainWindow::get_instance();
 
-
-    w->show();
-
-    QTimer timer;
-    QObject::connect(&timer, &QTimer::timeout, update);
-    timer.start(0);
+    w.show();
 
     return a.exec();
 }
