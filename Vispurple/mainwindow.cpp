@@ -1,11 +1,12 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
+
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
-    BlackBoard::set_label(new QLabel(this));
+    livescreen_label = new QLabel(this);
 
     ui->setupUi(this);
 
@@ -13,11 +14,15 @@ MainWindow::MainWindow(QWidget *parent) :
 
     setWindowTitle(tr("Live Screen"));
 
+    capture_screen();
+
+    timer = new QTimer(this);
+    QObject::connect(timer, SIGNAL(timeout()), this, SLOT(update()));
+    timer -> start(60/1000);
 }
 
 void MainWindow::initialize_interface()
 {
-    QLabel *livescreen_label = BlackBoard::get_label();
 
     livescreen_label -> setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
     livescreen_label -> setAlignment (Qt::AlignCenter);
@@ -41,18 +46,15 @@ void MainWindow::initialize_interface()
 
     mainLayout->addWidget(group);
 
-    BlackBoard::set_screen(QGuiApplication::primaryScreen());
+    screen = QGuiApplication::primaryScreen();
 
-    if(const QWindow *window = windowHandle())BlackBoard::set_screen(window->screen());
-    if(BlackBoard::get_screen() == nullptr) return;
-
-
-    BlackBoard::set_label(livescreen_label);
+    if(const QWindow *window = windowHandle())screen = window -> screen();
+    if(screen == nullptr) return;
 }
 
 void MainWindow::save_screenshot()
 {
-    QPixmap pixmap_to_save = *BlackBoard::get_pixmap();
+    QPixmap pixmap_to_save = original_pixmap;
 
     const QString format = "png";
         QString initialPath = QStandardPaths::writableLocation(QStandardPaths::PicturesLocation);
@@ -82,25 +84,47 @@ void MainWindow::save_screenshot()
 
 void MainWindow::resizeEvent(QResizeEvent* event)
 {
-    QLabel *livescreen_label = BlackBoard::get_label();
 
-    QSize scaledSize = BlackBoard::get_pixmap()->size();
-    scaledSize.scale(livescreen_label->size(), Qt::KeepAspectRatioByExpanding);
+    QSize scaledSize = original_pixmap.size();
+        scaledSize.scale(livescreen_label->size(), Qt::KeepAspectRatioByExpanding);
 
-    if(!livescreen_label -> pixmap() || scaledSize != livescreen_label -> pixmap() -> size()) resize_livescreen_label();
+        if(!livescreen_label -> pixmap() || scaledSize != livescreen_label -> pixmap() -> size()) resize_livescreen_label();
 
 }
 
 void MainWindow::resize_livescreen_label()
 {
-    QLabel *livescreen_label = BlackBoard::get_label();
-    livescreen_label->setPixmap(BlackBoard::get_pixmap()->scaled(livescreen_label->size(), Qt::KeepAspectRatioByExpanding));
+   livescreen_label->setPixmap(original_pixmap.scaled(livescreen_label->size(), Qt::KeepAspectRatioByExpanding));
 }
 
-void MainWindow::create_main_tasks()
+void MainWindow::white_to_red()
 {
-    TaskStack::Subscribe(new Task(*ScreenPreview::capture_screen));
-    TaskStack::Subscribe(new Task(*MainWindow::resize_livescreen_label), &TaskStack::late_tasks);
+    // code from
+    // https://www.qtcentre.org/threads/48211-How-to-change-QPixmap-color-from-black-to-red?p=300215#post300215
+    QImage image = original_pixmap.toImage();
+
+    QColor new_color = QColor(255, 0, 0, 255);
+    QColor old_color = QColor(255, 255, 255, 255);
+
+    for(int y = 0; y < image.height(); y++)
+      for(int x= 0; x < image.width(); x++)
+          if(image.pixelColor(x,y) == old_color) image.setPixelColor(x,y,new_color);
+
+   original_pixmap = QPixmap::fromImage(image);
+
 }
 
+/**
+ * @brief Updates the pixmap with the preview of the region captured
+ */
+void MainWindow::capture_screen()
+{
+    original_pixmap = screen->grabWindow(0);
+}
 
+void MainWindow::update()
+{
+    capture_screen();
+    white_to_red();
+    resize_livescreen_label();
+}

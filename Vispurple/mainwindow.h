@@ -13,14 +13,15 @@
 #include <QFileDialog>
 #include <QImageWriter>
 #include <QMessageBox>
+#include <QLabel>
+#include <QScreen>
+#include <QTimer>
 
-#include "taskstack.h"
-#include "recolor.h"
-#include "screenpreview.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
+
 
 class MainWindow : public QMainWindow
 {
@@ -39,13 +40,32 @@ private:
     QCheckBox   *white_to_red_button;
 
     Ui::MainWindow *ui;
+    /**
+     * @brief A pointer to the area that displays the region captured
+     */
+    QLabel   *livescreen_label;
+
+    /**
+     * @brief The screen being captured
+     */
+    QScreen   *screen;
+
+    /**
+     * @brief The pixmap with the preview of the region captured
+     */
+    QPixmap   original_pixmap;
+
+    bool need_to_recolor;
+
+    QTimer * timer;
+
 
 public:
 
     /**
      * @brief Updates the display of the region captured in the right scale
      */
-    static void resize_livescreen_label();
+    void resize_livescreen_label();
     /**
      * @brief Gets the global instance to this class
      * @return
@@ -77,7 +97,10 @@ private slots:
      * @brief Creates the task that changes the white color to red in the
      * task stack.
      */
-    void toggle_recolor() { TaskStack::Subscribe(new Task(*Recolor::white_to_red)); }
+    void toggle_recolor() { need_to_recolor != need_to_recolor; }
+
+    void update();
+
 
 private:
 
@@ -97,6 +120,18 @@ private:
      * @brief Create the main tasks in the task stack.
      */
     void create_main_tasks();
+
+    /**
+     * @brief Changes every white pixel in the preview of the region
+     * captured with a red pixel
+     */
+     void white_to_red();
+
+     /**
+      * @brief Updates the pixmap with the preview of the region captured
+      */
+     void capture_screen();
+
 
    ~MainWindow() override{ delete ui;}
 };

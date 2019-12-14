@@ -17,18 +17,10 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     main.cpp \
-    mainwindow.cpp \
-    recolor.cpp \
-    screenpreview.cpp \
-    taskstack.cpp
+    mainwindow.cpp
 
 HEADERS += \
-    blackboard.h \
-    mainwindow.h \
-    recolor.h \
-    screenpreview.h \
-    task.h \
-    taskstack.h
+    mainwindow.h
 
 FORMS += \
     mainwindow.ui
