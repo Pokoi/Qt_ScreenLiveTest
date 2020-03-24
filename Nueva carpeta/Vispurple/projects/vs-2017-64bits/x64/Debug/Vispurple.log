@@ -1,0 +1,7 @@
+﻿  Reading Qt configuration (ERROR: Qt install dir not found\bin\qmake.exe)
+Vispurple.vcxproj : error : ERROR running qmake
+Vispurple.vcxproj : error : qmake: (ERROR: Qt install dir not found\bin\qmake.exe)
+Vispurple.vcxproj : error : qmake: $PWD=C:\Users\jesus\AppData\Local\Temp\2vw2neas.g0f
+Vispurple.vcxproj : error : qmake: El nombre de archivo, el nombre de directorio o la sintaxis de la etiqueta del volumen no son correctos.
+Vispurple.vcxproj : error : qmake: Error creating Makefile
+Vispurple.vcxproj : error : 
