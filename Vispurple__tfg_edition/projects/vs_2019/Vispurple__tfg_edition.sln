@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29911.84
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Vispurple__tfg_edition", "Vispurple__tfg_edition.vcxproj", "{E96B928D-7511-462D-8709-C8103F3EBC76}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E96B928D-7511-462D-8709-C8103F3EBC76}.Debug|x64.ActiveCfg = Debug|x64
+		{E96B928D-7511-462D-8709-C8103F3EBC76}.Debug|x64.Build.0 = Debug|x64
+		{E96B928D-7511-462D-8709-C8103F3EBC76}.Release|x64.ActiveCfg = Release|x64
+		{E96B928D-7511-462D-8709-C8103F3EBC76}.Release|x64.Build.0 = Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {AA3E8AD0-7073-4E70-B1CE-BAA240D0BAA7}
+	EndGlobalSection
+EndGlobal
