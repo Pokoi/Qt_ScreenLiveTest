@@ -53,7 +53,7 @@ void Report::replace(std::string& str, const std::string& from, const std::strin
     }
 }
 
-void Report::export(const char* exportationPath)
+void Report::export_to(const char* exportationPath)
 {
     Image protanopia(*original);
     Image deuteranopia(*original);

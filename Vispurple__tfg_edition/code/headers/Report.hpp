@@ -73,7 +73,7 @@ public:
     @brief Exports the report to the given path
     @param exportationPath The path where locate the exported file
     */
-    void export(const char* exportationPath);   
+    void export_to(const char* exportationPath);   
 
     /**
     @brief Calculates the protanopia visual accessibility index

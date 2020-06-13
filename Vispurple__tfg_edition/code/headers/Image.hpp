@@ -118,20 +118,14 @@ public:
     @brief Gets a reference to the pixel at a certain index
     @param index The index of the pixel
     */
-    Pixel& get_pixel(uint16_t index)
-    {
-        return pixels[index];
-    }
+    Pixel& get_pixel(uint16_t index);
 
     /**
     @brief Gets a reference to the pixel at a certain position
     @param x The x coordinate of the pixel
     @param y The y coordinate of the pixel
     */
-    Pixel& get_pixel(uint16_t x, uint16_t y)
-    {
-        return pixels[y * width + x];
-    }
+    Pixel& get_pixel(uint16_t x, uint16_t y);
 
     /**
     @brief Sets a certain pixel in a given position
@@ -139,22 +133,13 @@ public:
     @param y The y coordinate of the pixel
     @param pixel The pixel data to apply
     */
-    void set_pixel(uint16_t x, uint16_t y, Pixel& pixel)
-    {
-        pixels[y * width + x] = pixel;
-    }
+    void set_pixel(uint16_t x, uint16_t y, Pixel& pixel);
 
     /**
     @brief Fills the entire image with the given pixel data
     @param pixel The pixel data to apply to all the image pixels
     */
-    void fill_image(Pixel& pixel)
-    {
-        for (auto& pixel : pixels)
-        {
-            pixel.rgb_components = pixel.rgb_components;
-        }
-    }
+    void fill_image(Pixel& pixel);
 
     /**
     @brief Exports the image to the given path
@@ -181,12 +166,7 @@ public:
     @param blue The blue component container
     @param original The pixel with the data
     */
-    void add_components(float& red, float& green, float& blue, Pixel& original)
-    {
-        red += original.rgb_components.red;
-        green += original.rgb_components.green;
-        blue += original.rgb_components.blue;
-    }
+    void add_components(float& red, float& green, float& blue, Pixel& original);
 
     /**
     @brief Apply a sobel colour effect to the image.
@@ -196,48 +176,20 @@ public:
     /**
     @brief Apply a protanopia simulation to the image.
     */
-    void simulate_protanopia()
-    {
-        for (auto& pixel : pixels)
-        {
-            pixel.simulate_protanopia();
-        }
-    }
+    void simulate_protanopia();
 
     /**
     @brief Apply a deuteranopia simulation to the image.
     */
-    void simulate_deuteranopia()
-    {
-        for (auto& pixel : pixels)
-        {
-            pixel.simulate_deuteranopia();
-        }
-    }
+    void simulate_deuteranopia();
 
     /**
     @brief Apply a tritanopia simulation to the image.
     */
-    void simulate_tritanopia()
-    {
-        for (auto& pixel : pixels)
-        {
-            pixel.simulate_tritanopia();
-        }
-    }
+    void simulate_tritanopia();
 
     /**
     @brief Calculates the squared difference between the color of two pixels
     */
-    float colour_difference(Pixel& first, Pixel& second)
-    {
-        first.convert_rgb_to_luv();
-        second.convert_rgb_to_luv();
-
-        return 
-            pow(second.luv_components.l - first.luv_components.l, 2.f) +
-            pow(second.luv_components.u - first.luv_components.u, 2.f) +
-            pow(second.luv_components.v - first.luv_components.v, 2.f);
-
-    }
+    float colour_difference(Pixel& first, Pixel& second);
 };

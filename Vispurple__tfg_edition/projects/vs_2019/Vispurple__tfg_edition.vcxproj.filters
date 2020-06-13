@@ -49,6 +49,9 @@
     <ClCompile Include="..\..\code\sources\Report.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\code\sources\ScreenMedia.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="..\..\code\headers\vispurple__tfg_edition.h">
@@ -63,6 +66,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\code\headers\Report.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\code\headers\ScreenMedia.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

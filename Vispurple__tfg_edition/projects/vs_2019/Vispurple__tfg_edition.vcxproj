@@ -44,12 +44,12 @@
   </ImportGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="QtSettings">
     <QtInstall>msvc2017_64</QtInstall>
-    <QtModules>core;gui;widgets;printsupport</QtModules>
+    <QtModules>core;gui;printsupport;widgets;winextras</QtModules>
     <QtBuildConfig>debug</QtBuildConfig>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'" Label="QtSettings">
     <QtInstall>msvc2017_64</QtInstall>
-    <QtModules>core;gui;widgets;printsupport</QtModules>
+    <QtModules>core;gui;printsupport;widgets;winextras</QtModules>
     <QtBuildConfig>release</QtBuildConfig>
   </PropertyGroup>
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.props')">
@@ -102,6 +102,7 @@
     <ClCompile Include="..\..\code\sources\main.cpp" />
     <ClCompile Include="..\..\code\sources\Pixel.cpp" />
     <ClCompile Include="..\..\code\sources\Report.cpp" />
+    <ClCompile Include="..\..\code\sources\ScreenMedia.cpp" />
     <ClCompile Include="..\..\code\sources\vispurple__tfg_edition.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -111,6 +112,7 @@
     <ClInclude Include="..\..\code\headers\Image.hpp" />
     <ClInclude Include="..\..\code\headers\Pixel.hpp" />
     <ClInclude Include="..\..\code\headers\Report.hpp" />
+    <ClInclude Include="..\..\code\headers\ScreenMedia.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">

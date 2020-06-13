@@ -31,10 +31,7 @@
 #include <Image.hpp>
 #include <math.h>
 
-/**
-@brief Converts the image to QImage data
-@return The QImage
-*/
+
 QImage Image::convert_to_qimage()
 {
     QImage img = QImage(int(width), int(height), QImage::Format::Format_RGB32);
@@ -60,10 +57,29 @@ QImage Image::convert_to_qimage()
 }
 
 
-/**
-@brief Exports the image to the given path
-@param path The path where exports the image
-*/
+Pixel& Image::get_pixel(uint16_t index)
+{
+    return pixels[index];
+}
+
+Pixel& Image::get_pixel(uint16_t x, uint16_t y)
+{
+    return pixels[y * width + x];
+}
+
+void Image::set_pixel(uint16_t x, uint16_t y, Pixel& pixel)
+{
+    pixels[y * width + x] = pixel;
+}
+
+void Image::fill_image(Pixel& pixel)
+{
+    for (auto& pixel : pixels)
+    {
+        pixel.rgb_components = pixel.rgb_components;
+    }
+}
+
 void Image::export_image(std::string path)
 {
     QImage img = QImage(int(width), int(height), QImage::Format::Format_RGB32);
@@ -95,20 +111,17 @@ void Image::export_image(std::string path)
         }
     }
 
-
     img.save(QString::fromStdString(path));
 }
 
-/**
-@brief Loads an image data from a file path
-#param path The path of the image
-*/
+
 Image::Image(std::string path) : pixels{ 500 * 500 }
 {
     QPixmap pm(QString(path.c_str()));
     QImage image = (pm.toImage());
     width = image.width();
     height = image.height();
+    pixels.resize(width * height);
 
     for (uint16_t i = 0; i < width; ++i)
     {
@@ -121,9 +134,7 @@ Image::Image(std::string path) : pixels{ 500 * 500 }
 
 }
 
-/**
-@brief Blurs the image.
-*/
+
 void Image::blur()
 {
     int iterator = 0;
@@ -239,9 +250,15 @@ void Image::blur()
 
 }
 
-/**
-@brief Apply a sobel colour effect to the image
-*/
+
+void Image::add_components(float& red, float& green, float& blue, Pixel& original)
+{
+    red += original.rgb_components.red;
+    green += original.rgb_components.green;
+    blue += original.rgb_components.blue;
+}
+
+
 void Image::sobel_colour()
 {
     int end = width * height;
@@ -295,11 +312,47 @@ void Image::sobel_colour()
     }
 }
 
-/**
-@brief Compare with a given image
-@param other The image to compare with
-@return The comparision index in range 0 - 100
-*/
+
+void Image::simulate_protanopia()
+{
+    for (auto& pixel : pixels)
+    {
+        pixel.simulate_protanopia();
+    }
+}
+
+
+void Image::simulate_deuteranopia()
+{
+    for (auto& pixel : pixels)
+    {
+        pixel.simulate_deuteranopia();
+    }
+}
+
+
+void Image::simulate_tritanopia()
+{
+    for (auto& pixel : pixels)
+    {
+        pixel.simulate_tritanopia();
+    }
+}
+
+
+float Image::colour_difference(Pixel& first, Pixel& second)
+{
+    first.convert_rgb_to_luv();
+    second.convert_rgb_to_luv();
+
+    return
+        pow(second.luv_components.l - first.luv_components.l, 2.f) +
+        pow(second.luv_components.u - first.luv_components.u, 2.f) +
+        pow(second.luv_components.v - first.luv_components.v, 2.f);
+
+}
+
+
 float Image::compare(Image& other)
 {
     float index = 0.f;
