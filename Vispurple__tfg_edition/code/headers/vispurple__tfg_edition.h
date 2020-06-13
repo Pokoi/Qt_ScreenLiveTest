@@ -7,14 +7,26 @@
 #include <ScreenMedia.hpp>
 #include <Report.hpp>
 
+#include <memory>
+
+#include <qtimer.h>
+#include <qfiledialog.h>
+
 class Vispurple__tfg_edition : public QMainWindow
 {
     Q_OBJECT
 
-        float delta_time;
+    enum TOOL_MODES { analyze = 0, simulation = 1 };
+    enum VISUALIZATION {window, image};
+
+    float delta_time_milliseconds;
 
     ScreenMedia media_screen;
     Report      report;
+    VISUALIZATION content_to_previsualizate;
+
+    std::shared_ptr<Image> original;
+    std::shared_ptr<QTimer> timer;
 
 public:
     Vispurple__tfg_edition(QWidget* parent = Q_NULLPTR);
@@ -23,13 +35,25 @@ public:
 private:
     Ui::Vispurple__tfg_editionClass ui;
 
-    void update() {}
 
-    void set_delta_time() {}
+private slots:
+    
+    void update();
 
-    void load_image() {}
+    void set_delta_time();    
 
-    void export_report() {}
+    void load_image();
 
-    void update_available_windows() {}
+    void export_report();
+
+    void update_available_windows();
+
+    void select_current_window();
+
+    void update_accessibility_index();
+
+    void simulate();
+
+    void save_image();
+   
 };

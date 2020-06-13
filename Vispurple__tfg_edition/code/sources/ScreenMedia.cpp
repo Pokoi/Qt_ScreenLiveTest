@@ -132,7 +132,7 @@ void ScreenMedia::update_available_windows()
 
         available_windows[name] = hwnd;
 
-        delete[] title;
+        //delete[] title;
     }
 }
 

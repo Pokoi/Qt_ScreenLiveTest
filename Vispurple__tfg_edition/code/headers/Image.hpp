@@ -91,6 +91,12 @@ public:
     }
 
     /**
+    @brief Creates an image with a pixmap data
+    @param pixmap The pixmap with the data
+    */
+    Image(QPixmap pixmap);
+
+    /**
     @brief Converts the image to QImage data
     @return The QImage
     */

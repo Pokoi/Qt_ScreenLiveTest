@@ -1,26 +1,31 @@
 <h1><img src="logoSource" alt="" height="30" /></h1>
 <h1 style="text-align: center;"><span style="text-decoration: underline;">Vispurple Visual Accessibility Report</span></h1>
-<table style="height: 282px; margin-left: auto; margin-right: auto;" border="1" width="578">
+<table style="height: 369px; margin-left: auto; margin-right: auto;" border="1" width="579">
 <tbody>
 <tr>
 <td style="width: 185px;">&nbsp;</td>
 <td style="width: 185px;">Image</td>
-<td style="width: 186px;">Edge detection</td>
+<td style="width: 187px;">Edge detection</td>
 </tr>
 <tr>
 <td style="width: 185px;">Original Image to analyze</td>
 <td style="width: 185px;"><img src="originalSource" alt="" width="100" height="100" /></td>
-<td style="width: 186px;"><img src="originalSobelSource" alt="" width="100" height="100" /></td>
+<td style="width: 187px;"><img src="originalSobelSource" alt="" width="100" height="100" /></td>
 </tr>
 <tr>
 <td style="width: 185px;">Protanopia simulation</td>
 <td style="width: 185px;"><img src="protanopiaSource" alt="" width="100" height="100" /></td>
-<td style="width: 186px;"><img src="protanopiaSobelSource" alt="" width="100" height="100" /></td>
+<td style="width: 187px;"><img src="protanopiaSobelSource" alt="" width="100" height="100" /></td>
 </tr>
 <tr>
 <td style="width: 185px;">Deuteranopia simulation</td>
 <td style="width: 185px;"><img src="deuteranopiaSource" alt="" width="100" height="100" /></td>
-<td style="width: 186px;"><img src="deuteranopiaSobelSource" alt="" width="100" height="100" /></td>
+<td style="width: 187px;"><img src="deuteranopiaSobelSource" alt="" width="100" height="100" /></td>
+</tr>
+<tr>
+<td style="width: 185px;">Tritanopia simulation</td>
+<td style="width: 185px;"><img src="tritanopiaSource" alt="" width="100" height="100" /></td>
+<td style="width: 187px;"><img src="tritanopiaSobelSource" alt="" width="100" height="100" /></td>
 </tr>
 </tbody>
 </table>
@@ -28,15 +33,22 @@
 <p>&nbsp;</p>
 <p style="text-align: center;"><strong>Visual accesibility index:</strong></p>
 <p style="text-align: center;">&nbsp;</p>
-<table style="height: 67px; margin-left: auto; margin-right: auto; width: 334.5px;">
+<table style="height: 125px; margin-left: auto; margin-right: auto; width: 494px;">
 <tbody>
 <tr>
-<td style="width: 158px;">Protanopia index:</td>
-<td style="width: 159.5px; text-align: right;">&nbsp;protanopiaIndex %</td>
+<td style="width: 159px;">Protanopia index:</td>
+<td style="width: 173px; text-align: right;">&nbsp;protanopiaIndex&nbsp;</td>
+<td style="width: 140px;">protanopiaComments</td>
 </tr>
 <tr>
-<td style="width: 158px;">Deuteranopia index:</td>
-<td style="width: 159.5px; text-align: right;">deuteranopiaIndex %</td>
+<td style="width: 159px;">Deuteranopia index:</td>
+<td style="width: 173px; text-align: right;">deuteranopiaIndex&nbsp;</td>
+<td style="width: 140px;">deuteranopiaComments</td>
+</tr>
+<tr>
+<td style="width: 159px;">Tritanopia index:</td>
+<td style="width: 173px; text-align: right;">tritanopiaIndex&nbsp;</td>
+<td style="width: 140px;">tritanopiaComments</td>
 </tr>
 </tbody>
 </table>

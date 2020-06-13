@@ -117,4 +117,23 @@ public:
     */
     void set_original_image(std::shared_ptr<Image>& original);
 
+    /**
+    @brief Adds the comments for protanopia
+    @param comments The comments
+    */
+    void add_protanopia_comments(std::string comments);
+    
+    /**
+    @brief Adds the comments for deuteranopia
+    @param comments The comments
+    */
+    void add_deuteranopia_comments(std::string comments);
+
+    /**
+    @brief Adds the comments for tritanopia
+    @param comments The comments
+    */
+    void add_tritanopia_comments(std::string comments);
+
+
 };

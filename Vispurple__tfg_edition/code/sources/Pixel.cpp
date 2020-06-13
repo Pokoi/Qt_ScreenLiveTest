@@ -128,19 +128,35 @@ void Pixel::simulate_tritanopia()
 {
     float buffer[3];
 
-    float l = (17.8824f) * rgb_components.red + (43.5161f) * rgb_components.green + (4.11935f) * rgb_components.blue;
-    float m = (3.45565f) * rgb_components.red + (27.1154f) * rgb_components.green + (3.86714f) * rgb_components.blue;
-    float s = (0.029956f) * rgb_components.red + (0.18431f) * rgb_components.green + (1.46709f) * rgb_components.blue;
-
-    buffer[0] = (1.0f) * l + (0.0f) * m + (0.0f) * s;
-    buffer[1] = (0.0f) * l + (1.f) * m + (0.0f) * s;
-    buffer[2] = (-0.39591) * l + (0.801109f) * m + (0.0f) * s;
-
-    rgb_components.red = (0.080944f) * buffer[0] + (-0.13050f) * buffer[1] + (0.11672f) * buffer[2];
-    rgb_components.green = (0.113614f) * buffer[0] + (-0.01025f) * buffer[1] + (0.05402f) * buffer[2];
-    rgb_components.blue = (-0.000365f) * buffer[0] + (-0.00412f) * buffer[1] + (0.69351f) * buffer[2];
+    convert_rgb_to_xyz(buffer);
+    convert_xyz_to_rgb(buffer);
 
     convert_rgb_to_luv();
+
+    float l = (17.8824f) * rgb_components.red + (43.5161f) * rgb_components.green + (4.11935f) * rgb_components.blue;
+    float m = (3.45565f) * rgb_components.red + (27.1554f) * rgb_components.green + (3.86714f) * rgb_components.blue;
+    float s = (0.029956f) * rgb_components.red + (0.18431f) * rgb_components.green + (1.46709f) * rgb_components.blue;
+       
+    buffer[0] = (1.0f) * luv_components.l + (0.0f) * luv_components.u + (0.0f) * luv_components.v;
+    buffer[1] = (0.0f) * luv_components.l + (1.f) * luv_components.u + (0.0f) * luv_components.v;
+    buffer[2] = (-0.39591) * luv_components.l + (0.801109f) * luv_components.u + (0.0f) * luv_components.v;
+
+    luv_components.l = buffer[0];
+    luv_components.u = buffer[1];
+    luv_components.v = buffer[2];
+
+    convert_luv_to_rgb();
+    /*
+    
+    rgb_components.red = clamp(((0.080944f) * buffer[0] + (-0.13050f) * buffer[1] + (0.11672f) * buffer[2]), 0.0f, 1.0f);
+    rgb_components.green = clamp(((0.113614f) * buffer[0] + (-0.01025f) * buffer[1] + (0.05402f) * buffer[2]), 0.0f, 1.0f);
+    rgb_components.blue = clamp(((-0.000365f) * buffer[0] + (-0.00412f) * buffer[1] + (0.69351f) * buffer[2]), 0.0f, 1.0f);
+    */
+
+
+
+
+    //convert_rgb_to_luv();
 
 }
 

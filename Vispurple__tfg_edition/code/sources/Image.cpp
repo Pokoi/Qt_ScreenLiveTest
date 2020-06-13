@@ -31,6 +31,23 @@
 #include <Image.hpp>
 #include <math.h>
 
+ 
+Image::Image(QPixmap pixmap)
+{
+    QImage image = (pixmap.toImage());
+    width = image.width();
+    height = image.height();
+    pixels.resize(width * height);
+
+    for (uint16_t i = 0; i < width; ++i)
+    {
+        for (uint16_t j = 0; j < height; ++j)
+        {
+            QColor colour = image.pixel(i, j);
+            pixels[j * width + i].rgb_components = Pixel::RGB(size_t(colour.red()), size_t(colour.green()), size_t(colour.blue()));
+        }
+    }
+}
 
 QImage Image::convert_to_qimage()
 {
@@ -250,14 +267,12 @@ void Image::blur()
 
 }
 
-
 void Image::add_components(float& red, float& green, float& blue, Pixel& original)
 {
     red += original.rgb_components.red;
     green += original.rgb_components.green;
     blue += original.rgb_components.blue;
 }
-
 
 void Image::sobel_colour()
 {
@@ -312,7 +327,6 @@ void Image::sobel_colour()
     }
 }
 
-
 void Image::simulate_protanopia()
 {
     for (auto& pixel : pixels)
@@ -320,7 +334,6 @@ void Image::simulate_protanopia()
         pixel.simulate_protanopia();
     }
 }
-
 
 void Image::simulate_deuteranopia()
 {
@@ -330,7 +343,6 @@ void Image::simulate_deuteranopia()
     }
 }
 
-
 void Image::simulate_tritanopia()
 {
     for (auto& pixel : pixels)
@@ -338,7 +350,6 @@ void Image::simulate_tritanopia()
         pixel.simulate_tritanopia();
     }
 }
-
 
 float Image::colour_difference(Pixel& first, Pixel& second)
 {
@@ -352,18 +363,21 @@ float Image::colour_difference(Pixel& first, Pixel& second)
 
 }
 
-
 float Image::compare(Image& other)
 {
     float index = 0.f;
     float iterator = 0;
     float max_count = width * height;
+    
+    float other_max = 0.0f;
 
     while (iterator < max_count)
-    {
+    {        
+        other_max += other.get_pixel(iterator).rgb_components.red;
+
         index += abs(this->get_pixel(iterator).rgb_components.red - other.get_pixel(iterator).rgb_components.red);       
         ++iterator;
     }
 
-    return 100 - (index / max_count);
+    return 100 * abs( 1 - (index / other_max));
 }

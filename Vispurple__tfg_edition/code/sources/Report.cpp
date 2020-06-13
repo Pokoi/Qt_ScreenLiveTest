@@ -166,3 +166,18 @@ void Report::set_original_image(std::shared_ptr<Image>& original)
 {
     this->original = original;
 }
+
+void Report::add_protanopia_comments(std::string comments)
+{
+    replace(content, "protanopiaComments", comments);
+}
+
+void Report::add_deuteranopia_comments(std::string comments)
+{
+    replace(content, "deuteranopiaComments", comments);
+}
+
+void Report::add_tritanopia_comments(std::string comments)
+{
+    replace(content, "tritanopiaComments", comments);
+}
