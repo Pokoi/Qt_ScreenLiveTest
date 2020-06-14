@@ -125,40 +125,64 @@ void Pixel::simulate_deuteranopia()
 
 
 void Pixel::simulate_tritanopia()
-{
+{      
     float buffer[3];
-
     convert_rgb_to_xyz(buffer);
+    convert_xyz_to_xyzt(buffer);
     convert_xyz_to_rgb(buffer);
-
-    convert_rgb_to_luv();
-
-    float l = (17.8824f) * rgb_components.red + (43.5161f) * rgb_components.green + (4.11935f) * rgb_components.blue;
-    float m = (3.45565f) * rgb_components.red + (27.1554f) * rgb_components.green + (3.86714f) * rgb_components.blue;
-    float s = (0.029956f) * rgb_components.red + (0.18431f) * rgb_components.green + (1.46709f) * rgb_components.blue;
-       
-    buffer[0] = (1.0f) * luv_components.l + (0.0f) * luv_components.u + (0.0f) * luv_components.v;
-    buffer[1] = (0.0f) * luv_components.l + (1.f) * luv_components.u + (0.0f) * luv_components.v;
-    buffer[2] = (-0.39591) * luv_components.l + (0.801109f) * luv_components.u + (0.0f) * luv_components.v;
-
-    luv_components.l = buffer[0];
-    luv_components.u = buffer[1];
-    luv_components.v = buffer[2];
-
-    convert_luv_to_rgb();
-    /*
-    
-    rgb_components.red = clamp(((0.080944f) * buffer[0] + (-0.13050f) * buffer[1] + (0.11672f) * buffer[2]), 0.0f, 1.0f);
-    rgb_components.green = clamp(((0.113614f) * buffer[0] + (-0.01025f) * buffer[1] + (0.05402f) * buffer[2]), 0.0f, 1.0f);
-    rgb_components.blue = clamp(((-0.000365f) * buffer[0] + (-0.00412f) * buffer[1] + (0.69351f) * buffer[2]), 0.0f, 1.0f);
-    */
-
-
-
-
-    //convert_rgb_to_luv();
-
 }
+
+
+void Pixel::simulate_achromatopsia()
+{
+    float value = rgb_components.red * 0.299f + rgb_components.red * 0.587f + rgb_components.red * 0.114f;
+    rgb_components.red = value;
+    rgb_components.green = value;
+    rgb_components.blue = value;
+}
+
+
+void Pixel::simulate_protanomaly()
+{
+    float originals[] = { rgb_components.red, rgb_components.green, rgb_components.blue };    
+    simulate_protanopia();
+    anomalyze(originals);
+}
+
+
+void Pixel::simulate_deuteranomaly()
+{
+    float originals[] = { rgb_components.red, rgb_components.green, rgb_components.blue };
+    simulate_deuteranopia();
+    anomalyze(originals);
+}
+
+
+void Pixel::simulate_tritanomaly()
+{
+    float originals[] = { rgb_components.red, rgb_components.green, rgb_components.blue };
+    simulate_tritanopia();
+    anomalyze(originals);
+}
+
+
+void Pixel::simulate_achromatomaly()
+{
+    float originals[] = { rgb_components.red, rgb_components.green, rgb_components.blue };
+    simulate_achromatopsia();
+    anomalyze(originals);
+}
+
+void Pixel::anomalyze(float* original_values)
+{
+    float v = 1.75f;
+    float d = v + 1.f;
+
+    rgb_components.red = (v * rgb_components.red + original_values[0]) / d;
+    rgb_components.green = (v * rgb_components.green + original_values[1]) / d;
+    rgb_components.blue = (v * rgb_components.blue + original_values[2]) / d;
+}
+
 
 void Pixel::correct_deuteranopia()
 {
@@ -216,13 +240,15 @@ void Pixel::convert_rgb_to_xyz(float* buffer)
 
 void Pixel::convert_xyz_to_xyzp(float* buffer)
 {
-    float original_0 = buffer[0];
-    float original_1 = buffer[1];
-    float original_2 = buffer[2];
+    float protanopia[] =
+    {
+        0.735f,
+        0.265f,
+        1.273463f,
+        -0.073894f
+    };
 
-    buffer[0] = (-0.3813f) * original_0 + (1.1228f) * original_1 + (0.1730f) * original_2;
-    buffer[1] = (-0.4691f) * original_0 + (1.3813f) * original_1 + (0.0587f) * original_2;
-    buffer[2] = /*(0.0f)   * original_0 + (0.0f)    * original_1 + */(1.0f) * original_2;
+    convert_xyz_to_xyzs(buffer, protanopia);
 }
 
 
@@ -237,13 +263,87 @@ void Pixel::convert_xyz_to_xyzd(float* buffer)
     buffer[2] = /*(0.0f)  * original_0 + (0.0f)    * original_1 + */(1.0f) * original_2;
 }
 
+void Pixel::convert_xyz_to_xyzt(float* buffer)
+{
+    float tritanopia[] =
+    {
+        0.171f,
+        -0.003f,
+        0.062921f,
+        0.292119f
+    };   
+    
+    convert_xyz_to_xyzs(buffer, tritanopia);
+}
+
+void Pixel::convert_xyz_to_xyzs(float* buffer, float* simulation_modifiers)
+{
+
+    float original_0 = buffer[0];
+    float original_1 = buffer[1];
+    float original_2 = buffer[2];
+
+    /*
+    The Color Blind Simulation function is
+    copyright (c) 2000-2001 by Matthew Wickline and the
+    Human-Computer Interaction Resource Network ( http://hcirn.com/ ).
+    It is used with the permission of Matthew Wickline and HCIRN,
+    and is freely available for non-commercial use. For commercial use, please
+    contact the Human-Computer Interaction Resource Network ( http://hcirn.com/ ).
+    */    
+
+    float cpu = simulation_modifiers[0];
+    float cpv = simulation_modifiers[1];
+    float am  = simulation_modifiers[2];
+    float ayi = simulation_modifiers[3];
+
+    float wx = 0.312713;
+    float wy = 0.329016;
+    float wz = 0.358271;
+
+    float sum_xyz = original_0 + original_1 + original_2;
+    float cu = 0.f;
+    float cv = 0.f;
+
+    if (sum_xyz != 0)
+    {
+        cu = original_0 / sum_xyz;
+        cv = original_1 / sum_xyz;
+    }
+
+    float nx = wx * original_1 / wy;
+    float nz = wz * original_1 / wy;
+    float clm;    
+
+    if (cu < cpu)
+    {
+        clm = (cpv - cv) / (cpu - cu);
+    }
+    else
+    {
+        clm = (cv - cpv) / (cu - cpu);
+    }
+
+    float clyi = cv - cu * clm;
+    float du = (ayi - clyi) / (clm - am);
+    float dv = (clm * du) + clyi;
+
+    buffer[0] = du * original_1 / dv;
+    buffer[1] = original_1;
+    buffer[2] = (1 - (du + dv)) * original_1 / dv; 
+
+}
+
 
 void Pixel::convert_xyz_to_rgb(float* buffer)
 {
     float r = (3.063218f) * buffer[0] + (-1.393325f) * buffer[1] + (-0.475802f) * buffer[2];
     float g = (-0.969243f) * buffer[0] + (1.875966f) * buffer[1] + (0.041555f) * buffer[2];
     float b = (0.067871f) * buffer[0] + (-0.228834f) * buffer[1] + (1.069251f) * buffer[2];
-    rgb_components.red = clamp(r, 0.f, 1.f);
+    
+    rgb_components.red   = clamp(r, 0.f, 1.f);
     rgb_components.green = clamp(g, 0.f, 1.f);;
-    rgb_components.blue = clamp(b, 0.f, 1.f);;
+    rgb_components.blue  = clamp(b, 0.f, 1.f);;
 }
+
+

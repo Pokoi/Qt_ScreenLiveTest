@@ -11,6 +11,7 @@
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
+#include <QtWidgets/QCheckBox>
 #include <QtWidgets/QComboBox>
 #include <QtWidgets/QGroupBox>
 #include <QtWidgets/QLabel>
@@ -21,6 +22,7 @@
 #include <QtWidgets/QTabWidget>
 #include <QtWidgets/QTextEdit>
 #include <QtWidgets/QToolBar>
+#include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -41,25 +43,55 @@ public:
     QTabWidget *tabWidget;
     QWidget *tab;
     QPushButton *exportReportButton;
-    QGroupBox *Tritanopia;
-    QLabel *tritanopiaLabel;
-    QLabel *tritanopiaIndexLabel;
-    QTextEdit *tritanopiaObservations;
-    QGroupBox *Protanopia;
+    QPushButton *calculateReportButton;
+    QLabel *label_11;
+    QTabWidget *tabWidget_2;
+    QWidget *tab_3;
     QLabel *protanopiaLabel;
     QLabel *protanopiaIndexLabel;
     QTextEdit *protanopiaObservations;
-    QGroupBox *Deuteranopia;
+    QWidget *tab_4;
+    QTextEdit *deuteranopiaObservations;
     QLabel *deuteranopiaLabel;
     QLabel *deuteranopiaIndexLabel;
-    QTextEdit *deuteranopiaObservations;
-    QPushButton *calculateReportButton;
-    QLabel *label_11;
+    QWidget *tab_5;
+    QTextEdit *tritanopiaObservations;
+    QLabel *tritanopiaLabel;
+    QLabel *tritanopiaIndexLabel;
+    QWidget *tab_6;
+    QTextEdit *achromatopsiaObservations;
+    QLabel *achromatopsiaLabel;
+    QLabel *achromatopsiaIndexLabel;
+    QWidget *tab_7;
+    QTextEdit *protanomalyObservations;
+    QLabel *protanomalyLabel;
+    QLabel *protanomalyIndexLabel;
+    QWidget *tab_8;
+    QTextEdit *deuteranomalyObservations;
+    QLabel *deuteranomalyLabel;
+    QLabel *deuteranomalyIndexLabel;
+    QWidget *tab_9;
+    QTextEdit *tritanomalyObservations;
+    QLabel *tritanomalyLabel;
+    QLabel *tritanomalyIndexLabel;
+    QWidget *tab_10;
+    QTextEdit *achromatomalyObservations;
+    QLabel *achromatomalyLabel;
+    QLabel *achromatomalyIndexLabel;
     QWidget *tab_2;
+    QPushButton *saveImageButton;
+    QWidget *verticalLayoutWidget;
+    QVBoxLayout *verticalLayout;
+    QRadioButton *normalSimulation;
     QRadioButton *protanopiaSimulation;
     QRadioButton *deuteranopiaSimulation;
     QRadioButton *tritanopiaSimulation;
-    QPushButton *saveImageButton;
+    QRadioButton *achromatopsiaSimulation;
+    QRadioButton *protanomalySimulation;
+    QRadioButton *deuteranomalySimulation;
+    QRadioButton *tritanomalySimulation;
+    QRadioButton *achromatomalySimulation;
+    QCheckBox *edgeDetectionCheck;
     QToolBar *mainToolBar;
     QStatusBar *statusBar;
 
@@ -313,18 +345,30 @@ public:
         exportReportButton = new QPushButton(tab);
         exportReportButton->setObjectName(QString::fromUtf8("exportReportButton"));
         exportReportButton->setGeometry(QRect(300, 700, 91, 23));
-        Tritanopia = new QGroupBox(tab);
-        Tritanopia->setObjectName(QString::fromUtf8("Tritanopia"));
-        Tritanopia->setGeometry(QRect(10, 470, 381, 221));
-        tritanopiaLabel = new QLabel(Tritanopia);
-        tritanopiaLabel->setObjectName(QString::fromUtf8("tritanopiaLabel"));
-        tritanopiaLabel->setGeometry(QRect(10, 30, 211, 151));
-        tritanopiaIndexLabel = new QLabel(Tritanopia);
-        tritanopiaIndexLabel->setObjectName(QString::fromUtf8("tritanopiaIndexLabel"));
-        tritanopiaIndexLabel->setGeometry(QRect(10, 190, 101, 21));
-        tritanopiaObservations = new QTextEdit(Tritanopia);
-        tritanopiaObservations->setObjectName(QString::fromUtf8("tritanopiaObservations"));
-        tritanopiaObservations->setGeometry(QRect(240, 20, 131, 181));
+        calculateReportButton = new QPushButton(tab);
+        calculateReportButton->setObjectName(QString::fromUtf8("calculateReportButton"));
+        calculateReportButton->setGeometry(QRect(10, 700, 91, 23));
+        label_11 = new QLabel(tab);
+        label_11->setObjectName(QString::fromUtf8("label_11"));
+        label_11->setGeometry(QRect(10, 730, 321, 16));
+        label_11->setFont(font);
+        tabWidget_2 = new QTabWidget(tab);
+        tabWidget_2->setObjectName(QString::fromUtf8("tabWidget_2"));
+        tabWidget_2->setGeometry(QRect(10, 10, 401, 641));
+        tabWidget_2->setTabPosition(QTabWidget::East);
+        tabWidget_2->setUsesScrollButtons(true);
+        tabWidget_2->setDocumentMode(false);
+        tab_3 = new QWidget();
+        tab_3->setObjectName(QString::fromUtf8("tab_3"));
+        protanopiaLabel = new QLabel(tab_3);
+        protanopiaLabel->setObjectName(QString::fromUtf8("protanopiaLabel"));
+        protanopiaLabel->setGeometry(QRect(10, 10, 351, 221));
+        protanopiaIndexLabel = new QLabel(tab_3);
+        protanopiaIndexLabel->setObjectName(QString::fromUtf8("protanopiaIndexLabel"));
+        protanopiaIndexLabel->setGeometry(QRect(10, 240, 361, 41));
+        protanopiaObservations = new QTextEdit(tab_3);
+        protanopiaObservations->setObjectName(QString::fromUtf8("protanopiaObservations"));
+        protanopiaObservations->setGeometry(QRect(10, 300, 361, 181));
         QPalette palette3;
         palette3.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette3.setBrush(QPalette::Active, QPalette::Button, brush1);
@@ -380,24 +424,18 @@ public:
 #if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
         palette3.setBrush(QPalette::Disabled, QPalette::PlaceholderText, brush5);
 #endif
-        tritanopiaObservations->setPalette(palette3);
-        tritanopiaObservations->setFrameShape(QFrame::StyledPanel);
-        tritanopiaObservations->setFrameShadow(QFrame::Raised);
-        tritanopiaObservations->setLineWidth(2);
-        tritanopiaObservations->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
-        tritanopiaObservations->setAcceptRichText(true);
-        Protanopia = new QGroupBox(tab);
-        Protanopia->setObjectName(QString::fromUtf8("Protanopia"));
-        Protanopia->setGeometry(QRect(10, 10, 381, 221));
-        protanopiaLabel = new QLabel(Protanopia);
-        protanopiaLabel->setObjectName(QString::fromUtf8("protanopiaLabel"));
-        protanopiaLabel->setGeometry(QRect(10, 30, 211, 151));
-        protanopiaIndexLabel = new QLabel(Protanopia);
-        protanopiaIndexLabel->setObjectName(QString::fromUtf8("protanopiaIndexLabel"));
-        protanopiaIndexLabel->setGeometry(QRect(10, 190, 101, 21));
-        protanopiaObservations = new QTextEdit(Protanopia);
-        protanopiaObservations->setObjectName(QString::fromUtf8("protanopiaObservations"));
-        protanopiaObservations->setGeometry(QRect(240, 20, 131, 181));
+        protanopiaObservations->setPalette(palette3);
+        protanopiaObservations->setFrameShape(QFrame::StyledPanel);
+        protanopiaObservations->setFrameShadow(QFrame::Raised);
+        protanopiaObservations->setLineWidth(2);
+        protanopiaObservations->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
+        protanopiaObservations->setAcceptRichText(true);
+        tabWidget_2->addTab(tab_3, QString());
+        tab_4 = new QWidget();
+        tab_4->setObjectName(QString::fromUtf8("tab_4"));
+        deuteranopiaObservations = new QTextEdit(tab_4);
+        deuteranopiaObservations->setObjectName(QString::fromUtf8("deuteranopiaObservations"));
+        deuteranopiaObservations->setGeometry(QRect(10, 300, 361, 181));
         QPalette palette4;
         palette4.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette4.setBrush(QPalette::Active, QPalette::Button, brush1);
@@ -453,24 +491,24 @@ public:
 #if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
         palette4.setBrush(QPalette::Disabled, QPalette::PlaceholderText, brush5);
 #endif
-        protanopiaObservations->setPalette(palette4);
-        protanopiaObservations->setFrameShape(QFrame::StyledPanel);
-        protanopiaObservations->setFrameShadow(QFrame::Raised);
-        protanopiaObservations->setLineWidth(2);
-        protanopiaObservations->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
-        protanopiaObservations->setAcceptRichText(true);
-        Deuteranopia = new QGroupBox(tab);
-        Deuteranopia->setObjectName(QString::fromUtf8("Deuteranopia"));
-        Deuteranopia->setGeometry(QRect(10, 240, 381, 221));
-        deuteranopiaLabel = new QLabel(Deuteranopia);
+        deuteranopiaObservations->setPalette(palette4);
+        deuteranopiaObservations->setFrameShape(QFrame::StyledPanel);
+        deuteranopiaObservations->setFrameShadow(QFrame::Raised);
+        deuteranopiaObservations->setLineWidth(2);
+        deuteranopiaObservations->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
+        deuteranopiaObservations->setAcceptRichText(true);
+        deuteranopiaLabel = new QLabel(tab_4);
         deuteranopiaLabel->setObjectName(QString::fromUtf8("deuteranopiaLabel"));
-        deuteranopiaLabel->setGeometry(QRect(10, 30, 211, 151));
-        deuteranopiaIndexLabel = new QLabel(Deuteranopia);
+        deuteranopiaLabel->setGeometry(QRect(10, 10, 351, 221));
+        deuteranopiaIndexLabel = new QLabel(tab_4);
         deuteranopiaIndexLabel->setObjectName(QString::fromUtf8("deuteranopiaIndexLabel"));
-        deuteranopiaIndexLabel->setGeometry(QRect(10, 190, 101, 21));
-        deuteranopiaObservations = new QTextEdit(Deuteranopia);
-        deuteranopiaObservations->setObjectName(QString::fromUtf8("deuteranopiaObservations"));
-        deuteranopiaObservations->setGeometry(QRect(240, 20, 131, 181));
+        deuteranopiaIndexLabel->setGeometry(QRect(10, 240, 361, 41));
+        tabWidget_2->addTab(tab_4, QString());
+        tab_5 = new QWidget();
+        tab_5->setObjectName(QString::fromUtf8("tab_5"));
+        tritanopiaObservations = new QTextEdit(tab_5);
+        tritanopiaObservations->setObjectName(QString::fromUtf8("tritanopiaObservations"));
+        tritanopiaObservations->setGeometry(QRect(10, 300, 361, 181));
         QPalette palette5;
         palette5.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette5.setBrush(QPalette::Active, QPalette::Button, brush1);
@@ -526,34 +564,447 @@ public:
 #if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
         palette5.setBrush(QPalette::Disabled, QPalette::PlaceholderText, brush5);
 #endif
-        deuteranopiaObservations->setPalette(palette5);
-        deuteranopiaObservations->setFrameShape(QFrame::StyledPanel);
-        deuteranopiaObservations->setFrameShadow(QFrame::Raised);
-        deuteranopiaObservations->setLineWidth(2);
-        deuteranopiaObservations->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
-        deuteranopiaObservations->setAcceptRichText(true);
-        calculateReportButton = new QPushButton(tab);
-        calculateReportButton->setObjectName(QString::fromUtf8("calculateReportButton"));
-        calculateReportButton->setGeometry(QRect(10, 700, 91, 23));
-        label_11 = new QLabel(tab);
-        label_11->setObjectName(QString::fromUtf8("label_11"));
-        label_11->setGeometry(QRect(10, 730, 321, 16));
-        label_11->setFont(font);
+        tritanopiaObservations->setPalette(palette5);
+        tritanopiaObservations->setFrameShape(QFrame::StyledPanel);
+        tritanopiaObservations->setFrameShadow(QFrame::Raised);
+        tritanopiaObservations->setLineWidth(2);
+        tritanopiaObservations->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
+        tritanopiaObservations->setAcceptRichText(true);
+        tritanopiaLabel = new QLabel(tab_5);
+        tritanopiaLabel->setObjectName(QString::fromUtf8("tritanopiaLabel"));
+        tritanopiaLabel->setGeometry(QRect(10, 10, 351, 221));
+        tritanopiaIndexLabel = new QLabel(tab_5);
+        tritanopiaIndexLabel->setObjectName(QString::fromUtf8("tritanopiaIndexLabel"));
+        tritanopiaIndexLabel->setGeometry(QRect(10, 240, 361, 41));
+        tabWidget_2->addTab(tab_5, QString());
+        tab_6 = new QWidget();
+        tab_6->setObjectName(QString::fromUtf8("tab_6"));
+        achromatopsiaObservations = new QTextEdit(tab_6);
+        achromatopsiaObservations->setObjectName(QString::fromUtf8("achromatopsiaObservations"));
+        achromatopsiaObservations->setGeometry(QRect(10, 300, 361, 181));
+        QPalette palette6;
+        palette6.setBrush(QPalette::Active, QPalette::WindowText, brush);
+        palette6.setBrush(QPalette::Active, QPalette::Button, brush1);
+        palette6.setBrush(QPalette::Active, QPalette::Light, brush1);
+        palette6.setBrush(QPalette::Active, QPalette::Midlight, brush1);
+        palette6.setBrush(QPalette::Active, QPalette::Dark, brush2);
+        palette6.setBrush(QPalette::Active, QPalette::Mid, brush3);
+        palette6.setBrush(QPalette::Active, QPalette::Text, brush);
+        palette6.setBrush(QPalette::Active, QPalette::BrightText, brush1);
+        palette6.setBrush(QPalette::Active, QPalette::ButtonText, brush);
+        palette6.setBrush(QPalette::Active, QPalette::Base, brush1);
+        palette6.setBrush(QPalette::Active, QPalette::Window, brush1);
+        palette6.setBrush(QPalette::Active, QPalette::Shadow, brush);
+        palette6.setBrush(QPalette::Active, QPalette::AlternateBase, brush1);
+        palette6.setBrush(QPalette::Active, QPalette::ToolTipBase, brush4);
+        palette6.setBrush(QPalette::Active, QPalette::ToolTipText, brush);
+#if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
+        palette6.setBrush(QPalette::Active, QPalette::PlaceholderText, brush5);
+#endif
+        palette6.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
+        palette6.setBrush(QPalette::Inactive, QPalette::Button, brush1);
+        palette6.setBrush(QPalette::Inactive, QPalette::Light, brush1);
+        palette6.setBrush(QPalette::Inactive, QPalette::Midlight, brush1);
+        palette6.setBrush(QPalette::Inactive, QPalette::Dark, brush2);
+        palette6.setBrush(QPalette::Inactive, QPalette::Mid, brush3);
+        palette6.setBrush(QPalette::Inactive, QPalette::Text, brush);
+        palette6.setBrush(QPalette::Inactive, QPalette::BrightText, brush1);
+        palette6.setBrush(QPalette::Inactive, QPalette::ButtonText, brush);
+        palette6.setBrush(QPalette::Inactive, QPalette::Base, brush1);
+        palette6.setBrush(QPalette::Inactive, QPalette::Window, brush1);
+        palette6.setBrush(QPalette::Inactive, QPalette::Shadow, brush);
+        palette6.setBrush(QPalette::Inactive, QPalette::AlternateBase, brush1);
+        palette6.setBrush(QPalette::Inactive, QPalette::ToolTipBase, brush4);
+        palette6.setBrush(QPalette::Inactive, QPalette::ToolTipText, brush);
+#if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
+        palette6.setBrush(QPalette::Inactive, QPalette::PlaceholderText, brush5);
+#endif
+        palette6.setBrush(QPalette::Disabled, QPalette::WindowText, brush2);
+        palette6.setBrush(QPalette::Disabled, QPalette::Button, brush1);
+        palette6.setBrush(QPalette::Disabled, QPalette::Light, brush1);
+        palette6.setBrush(QPalette::Disabled, QPalette::Midlight, brush1);
+        palette6.setBrush(QPalette::Disabled, QPalette::Dark, brush2);
+        palette6.setBrush(QPalette::Disabled, QPalette::Mid, brush3);
+        palette6.setBrush(QPalette::Disabled, QPalette::Text, brush2);
+        palette6.setBrush(QPalette::Disabled, QPalette::BrightText, brush1);
+        palette6.setBrush(QPalette::Disabled, QPalette::ButtonText, brush2);
+        palette6.setBrush(QPalette::Disabled, QPalette::Base, brush1);
+        palette6.setBrush(QPalette::Disabled, QPalette::Window, brush1);
+        palette6.setBrush(QPalette::Disabled, QPalette::Shadow, brush);
+        palette6.setBrush(QPalette::Disabled, QPalette::AlternateBase, brush1);
+        palette6.setBrush(QPalette::Disabled, QPalette::ToolTipBase, brush4);
+        palette6.setBrush(QPalette::Disabled, QPalette::ToolTipText, brush);
+#if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
+        palette6.setBrush(QPalette::Disabled, QPalette::PlaceholderText, brush5);
+#endif
+        achromatopsiaObservations->setPalette(palette6);
+        achromatopsiaObservations->setFrameShape(QFrame::StyledPanel);
+        achromatopsiaObservations->setFrameShadow(QFrame::Raised);
+        achromatopsiaObservations->setLineWidth(2);
+        achromatopsiaObservations->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
+        achromatopsiaObservations->setAcceptRichText(true);
+        achromatopsiaLabel = new QLabel(tab_6);
+        achromatopsiaLabel->setObjectName(QString::fromUtf8("achromatopsiaLabel"));
+        achromatopsiaLabel->setGeometry(QRect(10, 10, 351, 221));
+        achromatopsiaIndexLabel = new QLabel(tab_6);
+        achromatopsiaIndexLabel->setObjectName(QString::fromUtf8("achromatopsiaIndexLabel"));
+        achromatopsiaIndexLabel->setGeometry(QRect(10, 240, 361, 41));
+        tabWidget_2->addTab(tab_6, QString());
+        tab_7 = new QWidget();
+        tab_7->setObjectName(QString::fromUtf8("tab_7"));
+        protanomalyObservations = new QTextEdit(tab_7);
+        protanomalyObservations->setObjectName(QString::fromUtf8("protanomalyObservations"));
+        protanomalyObservations->setGeometry(QRect(10, 300, 361, 181));
+        QPalette palette7;
+        palette7.setBrush(QPalette::Active, QPalette::WindowText, brush);
+        palette7.setBrush(QPalette::Active, QPalette::Button, brush1);
+        palette7.setBrush(QPalette::Active, QPalette::Light, brush1);
+        palette7.setBrush(QPalette::Active, QPalette::Midlight, brush1);
+        palette7.setBrush(QPalette::Active, QPalette::Dark, brush2);
+        palette7.setBrush(QPalette::Active, QPalette::Mid, brush3);
+        palette7.setBrush(QPalette::Active, QPalette::Text, brush);
+        palette7.setBrush(QPalette::Active, QPalette::BrightText, brush1);
+        palette7.setBrush(QPalette::Active, QPalette::ButtonText, brush);
+        palette7.setBrush(QPalette::Active, QPalette::Base, brush1);
+        palette7.setBrush(QPalette::Active, QPalette::Window, brush1);
+        palette7.setBrush(QPalette::Active, QPalette::Shadow, brush);
+        palette7.setBrush(QPalette::Active, QPalette::AlternateBase, brush1);
+        palette7.setBrush(QPalette::Active, QPalette::ToolTipBase, brush4);
+        palette7.setBrush(QPalette::Active, QPalette::ToolTipText, brush);
+#if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
+        palette7.setBrush(QPalette::Active, QPalette::PlaceholderText, brush5);
+#endif
+        palette7.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
+        palette7.setBrush(QPalette::Inactive, QPalette::Button, brush1);
+        palette7.setBrush(QPalette::Inactive, QPalette::Light, brush1);
+        palette7.setBrush(QPalette::Inactive, QPalette::Midlight, brush1);
+        palette7.setBrush(QPalette::Inactive, QPalette::Dark, brush2);
+        palette7.setBrush(QPalette::Inactive, QPalette::Mid, brush3);
+        palette7.setBrush(QPalette::Inactive, QPalette::Text, brush);
+        palette7.setBrush(QPalette::Inactive, QPalette::BrightText, brush1);
+        palette7.setBrush(QPalette::Inactive, QPalette::ButtonText, brush);
+        palette7.setBrush(QPalette::Inactive, QPalette::Base, brush1);
+        palette7.setBrush(QPalette::Inactive, QPalette::Window, brush1);
+        palette7.setBrush(QPalette::Inactive, QPalette::Shadow, brush);
+        palette7.setBrush(QPalette::Inactive, QPalette::AlternateBase, brush1);
+        palette7.setBrush(QPalette::Inactive, QPalette::ToolTipBase, brush4);
+        palette7.setBrush(QPalette::Inactive, QPalette::ToolTipText, brush);
+#if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
+        palette7.setBrush(QPalette::Inactive, QPalette::PlaceholderText, brush5);
+#endif
+        palette7.setBrush(QPalette::Disabled, QPalette::WindowText, brush2);
+        palette7.setBrush(QPalette::Disabled, QPalette::Button, brush1);
+        palette7.setBrush(QPalette::Disabled, QPalette::Light, brush1);
+        palette7.setBrush(QPalette::Disabled, QPalette::Midlight, brush1);
+        palette7.setBrush(QPalette::Disabled, QPalette::Dark, brush2);
+        palette7.setBrush(QPalette::Disabled, QPalette::Mid, brush3);
+        palette7.setBrush(QPalette::Disabled, QPalette::Text, brush2);
+        palette7.setBrush(QPalette::Disabled, QPalette::BrightText, brush1);
+        palette7.setBrush(QPalette::Disabled, QPalette::ButtonText, brush2);
+        palette7.setBrush(QPalette::Disabled, QPalette::Base, brush1);
+        palette7.setBrush(QPalette::Disabled, QPalette::Window, brush1);
+        palette7.setBrush(QPalette::Disabled, QPalette::Shadow, brush);
+        palette7.setBrush(QPalette::Disabled, QPalette::AlternateBase, brush1);
+        palette7.setBrush(QPalette::Disabled, QPalette::ToolTipBase, brush4);
+        palette7.setBrush(QPalette::Disabled, QPalette::ToolTipText, brush);
+#if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
+        palette7.setBrush(QPalette::Disabled, QPalette::PlaceholderText, brush5);
+#endif
+        protanomalyObservations->setPalette(palette7);
+        protanomalyObservations->setFrameShape(QFrame::StyledPanel);
+        protanomalyObservations->setFrameShadow(QFrame::Raised);
+        protanomalyObservations->setLineWidth(2);
+        protanomalyObservations->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
+        protanomalyObservations->setAcceptRichText(true);
+        protanomalyLabel = new QLabel(tab_7);
+        protanomalyLabel->setObjectName(QString::fromUtf8("protanomalyLabel"));
+        protanomalyLabel->setGeometry(QRect(10, 10, 351, 221));
+        protanomalyIndexLabel = new QLabel(tab_7);
+        protanomalyIndexLabel->setObjectName(QString::fromUtf8("protanomalyIndexLabel"));
+        protanomalyIndexLabel->setGeometry(QRect(10, 240, 361, 41));
+        tabWidget_2->addTab(tab_7, QString());
+        tab_8 = new QWidget();
+        tab_8->setObjectName(QString::fromUtf8("tab_8"));
+        deuteranomalyObservations = new QTextEdit(tab_8);
+        deuteranomalyObservations->setObjectName(QString::fromUtf8("deuteranomalyObservations"));
+        deuteranomalyObservations->setGeometry(QRect(10, 300, 361, 181));
+        QPalette palette8;
+        palette8.setBrush(QPalette::Active, QPalette::WindowText, brush);
+        palette8.setBrush(QPalette::Active, QPalette::Button, brush1);
+        palette8.setBrush(QPalette::Active, QPalette::Light, brush1);
+        palette8.setBrush(QPalette::Active, QPalette::Midlight, brush1);
+        palette8.setBrush(QPalette::Active, QPalette::Dark, brush2);
+        palette8.setBrush(QPalette::Active, QPalette::Mid, brush3);
+        palette8.setBrush(QPalette::Active, QPalette::Text, brush);
+        palette8.setBrush(QPalette::Active, QPalette::BrightText, brush1);
+        palette8.setBrush(QPalette::Active, QPalette::ButtonText, brush);
+        palette8.setBrush(QPalette::Active, QPalette::Base, brush1);
+        palette8.setBrush(QPalette::Active, QPalette::Window, brush1);
+        palette8.setBrush(QPalette::Active, QPalette::Shadow, brush);
+        palette8.setBrush(QPalette::Active, QPalette::AlternateBase, brush1);
+        palette8.setBrush(QPalette::Active, QPalette::ToolTipBase, brush4);
+        palette8.setBrush(QPalette::Active, QPalette::ToolTipText, brush);
+#if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
+        palette8.setBrush(QPalette::Active, QPalette::PlaceholderText, brush5);
+#endif
+        palette8.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
+        palette8.setBrush(QPalette::Inactive, QPalette::Button, brush1);
+        palette8.setBrush(QPalette::Inactive, QPalette::Light, brush1);
+        palette8.setBrush(QPalette::Inactive, QPalette::Midlight, brush1);
+        palette8.setBrush(QPalette::Inactive, QPalette::Dark, brush2);
+        palette8.setBrush(QPalette::Inactive, QPalette::Mid, brush3);
+        palette8.setBrush(QPalette::Inactive, QPalette::Text, brush);
+        palette8.setBrush(QPalette::Inactive, QPalette::BrightText, brush1);
+        palette8.setBrush(QPalette::Inactive, QPalette::ButtonText, brush);
+        palette8.setBrush(QPalette::Inactive, QPalette::Base, brush1);
+        palette8.setBrush(QPalette::Inactive, QPalette::Window, brush1);
+        palette8.setBrush(QPalette::Inactive, QPalette::Shadow, brush);
+        palette8.setBrush(QPalette::Inactive, QPalette::AlternateBase, brush1);
+        palette8.setBrush(QPalette::Inactive, QPalette::ToolTipBase, brush4);
+        palette8.setBrush(QPalette::Inactive, QPalette::ToolTipText, brush);
+#if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
+        palette8.setBrush(QPalette::Inactive, QPalette::PlaceholderText, brush5);
+#endif
+        palette8.setBrush(QPalette::Disabled, QPalette::WindowText, brush2);
+        palette8.setBrush(QPalette::Disabled, QPalette::Button, brush1);
+        palette8.setBrush(QPalette::Disabled, QPalette::Light, brush1);
+        palette8.setBrush(QPalette::Disabled, QPalette::Midlight, brush1);
+        palette8.setBrush(QPalette::Disabled, QPalette::Dark, brush2);
+        palette8.setBrush(QPalette::Disabled, QPalette::Mid, brush3);
+        palette8.setBrush(QPalette::Disabled, QPalette::Text, brush2);
+        palette8.setBrush(QPalette::Disabled, QPalette::BrightText, brush1);
+        palette8.setBrush(QPalette::Disabled, QPalette::ButtonText, brush2);
+        palette8.setBrush(QPalette::Disabled, QPalette::Base, brush1);
+        palette8.setBrush(QPalette::Disabled, QPalette::Window, brush1);
+        palette8.setBrush(QPalette::Disabled, QPalette::Shadow, brush);
+        palette8.setBrush(QPalette::Disabled, QPalette::AlternateBase, brush1);
+        palette8.setBrush(QPalette::Disabled, QPalette::ToolTipBase, brush4);
+        palette8.setBrush(QPalette::Disabled, QPalette::ToolTipText, brush);
+#if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
+        palette8.setBrush(QPalette::Disabled, QPalette::PlaceholderText, brush5);
+#endif
+        deuteranomalyObservations->setPalette(palette8);
+        deuteranomalyObservations->setFrameShape(QFrame::StyledPanel);
+        deuteranomalyObservations->setFrameShadow(QFrame::Raised);
+        deuteranomalyObservations->setLineWidth(2);
+        deuteranomalyObservations->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
+        deuteranomalyObservations->setAcceptRichText(true);
+        deuteranomalyLabel = new QLabel(tab_8);
+        deuteranomalyLabel->setObjectName(QString::fromUtf8("deuteranomalyLabel"));
+        deuteranomalyLabel->setGeometry(QRect(10, 10, 351, 221));
+        deuteranomalyIndexLabel = new QLabel(tab_8);
+        deuteranomalyIndexLabel->setObjectName(QString::fromUtf8("deuteranomalyIndexLabel"));
+        deuteranomalyIndexLabel->setGeometry(QRect(10, 240, 361, 41));
+        tabWidget_2->addTab(tab_8, QString());
+        tab_9 = new QWidget();
+        tab_9->setObjectName(QString::fromUtf8("tab_9"));
+        tritanomalyObservations = new QTextEdit(tab_9);
+        tritanomalyObservations->setObjectName(QString::fromUtf8("tritanomalyObservations"));
+        tritanomalyObservations->setGeometry(QRect(10, 300, 361, 181));
+        QPalette palette9;
+        palette9.setBrush(QPalette::Active, QPalette::WindowText, brush);
+        palette9.setBrush(QPalette::Active, QPalette::Button, brush1);
+        palette9.setBrush(QPalette::Active, QPalette::Light, brush1);
+        palette9.setBrush(QPalette::Active, QPalette::Midlight, brush1);
+        palette9.setBrush(QPalette::Active, QPalette::Dark, brush2);
+        palette9.setBrush(QPalette::Active, QPalette::Mid, brush3);
+        palette9.setBrush(QPalette::Active, QPalette::Text, brush);
+        palette9.setBrush(QPalette::Active, QPalette::BrightText, brush1);
+        palette9.setBrush(QPalette::Active, QPalette::ButtonText, brush);
+        palette9.setBrush(QPalette::Active, QPalette::Base, brush1);
+        palette9.setBrush(QPalette::Active, QPalette::Window, brush1);
+        palette9.setBrush(QPalette::Active, QPalette::Shadow, brush);
+        palette9.setBrush(QPalette::Active, QPalette::AlternateBase, brush1);
+        palette9.setBrush(QPalette::Active, QPalette::ToolTipBase, brush4);
+        palette9.setBrush(QPalette::Active, QPalette::ToolTipText, brush);
+#if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
+        palette9.setBrush(QPalette::Active, QPalette::PlaceholderText, brush5);
+#endif
+        palette9.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
+        palette9.setBrush(QPalette::Inactive, QPalette::Button, brush1);
+        palette9.setBrush(QPalette::Inactive, QPalette::Light, brush1);
+        palette9.setBrush(QPalette::Inactive, QPalette::Midlight, brush1);
+        palette9.setBrush(QPalette::Inactive, QPalette::Dark, brush2);
+        palette9.setBrush(QPalette::Inactive, QPalette::Mid, brush3);
+        palette9.setBrush(QPalette::Inactive, QPalette::Text, brush);
+        palette9.setBrush(QPalette::Inactive, QPalette::BrightText, brush1);
+        palette9.setBrush(QPalette::Inactive, QPalette::ButtonText, brush);
+        palette9.setBrush(QPalette::Inactive, QPalette::Base, brush1);
+        palette9.setBrush(QPalette::Inactive, QPalette::Window, brush1);
+        palette9.setBrush(QPalette::Inactive, QPalette::Shadow, brush);
+        palette9.setBrush(QPalette::Inactive, QPalette::AlternateBase, brush1);
+        palette9.setBrush(QPalette::Inactive, QPalette::ToolTipBase, brush4);
+        palette9.setBrush(QPalette::Inactive, QPalette::ToolTipText, brush);
+#if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
+        palette9.setBrush(QPalette::Inactive, QPalette::PlaceholderText, brush5);
+#endif
+        palette9.setBrush(QPalette::Disabled, QPalette::WindowText, brush2);
+        palette9.setBrush(QPalette::Disabled, QPalette::Button, brush1);
+        palette9.setBrush(QPalette::Disabled, QPalette::Light, brush1);
+        palette9.setBrush(QPalette::Disabled, QPalette::Midlight, brush1);
+        palette9.setBrush(QPalette::Disabled, QPalette::Dark, brush2);
+        palette9.setBrush(QPalette::Disabled, QPalette::Mid, brush3);
+        palette9.setBrush(QPalette::Disabled, QPalette::Text, brush2);
+        palette9.setBrush(QPalette::Disabled, QPalette::BrightText, brush1);
+        palette9.setBrush(QPalette::Disabled, QPalette::ButtonText, brush2);
+        palette9.setBrush(QPalette::Disabled, QPalette::Base, brush1);
+        palette9.setBrush(QPalette::Disabled, QPalette::Window, brush1);
+        palette9.setBrush(QPalette::Disabled, QPalette::Shadow, brush);
+        palette9.setBrush(QPalette::Disabled, QPalette::AlternateBase, brush1);
+        palette9.setBrush(QPalette::Disabled, QPalette::ToolTipBase, brush4);
+        palette9.setBrush(QPalette::Disabled, QPalette::ToolTipText, brush);
+#if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
+        palette9.setBrush(QPalette::Disabled, QPalette::PlaceholderText, brush5);
+#endif
+        tritanomalyObservations->setPalette(palette9);
+        tritanomalyObservations->setFrameShape(QFrame::StyledPanel);
+        tritanomalyObservations->setFrameShadow(QFrame::Raised);
+        tritanomalyObservations->setLineWidth(2);
+        tritanomalyObservations->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
+        tritanomalyObservations->setAcceptRichText(true);
+        tritanomalyLabel = new QLabel(tab_9);
+        tritanomalyLabel->setObjectName(QString::fromUtf8("tritanomalyLabel"));
+        tritanomalyLabel->setGeometry(QRect(10, 10, 351, 221));
+        tritanomalyIndexLabel = new QLabel(tab_9);
+        tritanomalyIndexLabel->setObjectName(QString::fromUtf8("tritanomalyIndexLabel"));
+        tritanomalyIndexLabel->setGeometry(QRect(10, 240, 361, 41));
+        tabWidget_2->addTab(tab_9, QString());
+        tab_10 = new QWidget();
+        tab_10->setObjectName(QString::fromUtf8("tab_10"));
+        achromatomalyObservations = new QTextEdit(tab_10);
+        achromatomalyObservations->setObjectName(QString::fromUtf8("achromatomalyObservations"));
+        achromatomalyObservations->setGeometry(QRect(10, 300, 361, 181));
+        QPalette palette10;
+        palette10.setBrush(QPalette::Active, QPalette::WindowText, brush);
+        palette10.setBrush(QPalette::Active, QPalette::Button, brush1);
+        palette10.setBrush(QPalette::Active, QPalette::Light, brush1);
+        palette10.setBrush(QPalette::Active, QPalette::Midlight, brush1);
+        palette10.setBrush(QPalette::Active, QPalette::Dark, brush2);
+        palette10.setBrush(QPalette::Active, QPalette::Mid, brush3);
+        palette10.setBrush(QPalette::Active, QPalette::Text, brush);
+        palette10.setBrush(QPalette::Active, QPalette::BrightText, brush1);
+        palette10.setBrush(QPalette::Active, QPalette::ButtonText, brush);
+        palette10.setBrush(QPalette::Active, QPalette::Base, brush1);
+        palette10.setBrush(QPalette::Active, QPalette::Window, brush1);
+        palette10.setBrush(QPalette::Active, QPalette::Shadow, brush);
+        palette10.setBrush(QPalette::Active, QPalette::AlternateBase, brush1);
+        palette10.setBrush(QPalette::Active, QPalette::ToolTipBase, brush4);
+        palette10.setBrush(QPalette::Active, QPalette::ToolTipText, brush);
+#if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
+        palette10.setBrush(QPalette::Active, QPalette::PlaceholderText, brush5);
+#endif
+        palette10.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
+        palette10.setBrush(QPalette::Inactive, QPalette::Button, brush1);
+        palette10.setBrush(QPalette::Inactive, QPalette::Light, brush1);
+        palette10.setBrush(QPalette::Inactive, QPalette::Midlight, brush1);
+        palette10.setBrush(QPalette::Inactive, QPalette::Dark, brush2);
+        palette10.setBrush(QPalette::Inactive, QPalette::Mid, brush3);
+        palette10.setBrush(QPalette::Inactive, QPalette::Text, brush);
+        palette10.setBrush(QPalette::Inactive, QPalette::BrightText, brush1);
+        palette10.setBrush(QPalette::Inactive, QPalette::ButtonText, brush);
+        palette10.setBrush(QPalette::Inactive, QPalette::Base, brush1);
+        palette10.setBrush(QPalette::Inactive, QPalette::Window, brush1);
+        palette10.setBrush(QPalette::Inactive, QPalette::Shadow, brush);
+        palette10.setBrush(QPalette::Inactive, QPalette::AlternateBase, brush1);
+        palette10.setBrush(QPalette::Inactive, QPalette::ToolTipBase, brush4);
+        palette10.setBrush(QPalette::Inactive, QPalette::ToolTipText, brush);
+#if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
+        palette10.setBrush(QPalette::Inactive, QPalette::PlaceholderText, brush5);
+#endif
+        palette10.setBrush(QPalette::Disabled, QPalette::WindowText, brush2);
+        palette10.setBrush(QPalette::Disabled, QPalette::Button, brush1);
+        palette10.setBrush(QPalette::Disabled, QPalette::Light, brush1);
+        palette10.setBrush(QPalette::Disabled, QPalette::Midlight, brush1);
+        palette10.setBrush(QPalette::Disabled, QPalette::Dark, brush2);
+        palette10.setBrush(QPalette::Disabled, QPalette::Mid, brush3);
+        palette10.setBrush(QPalette::Disabled, QPalette::Text, brush2);
+        palette10.setBrush(QPalette::Disabled, QPalette::BrightText, brush1);
+        palette10.setBrush(QPalette::Disabled, QPalette::ButtonText, brush2);
+        palette10.setBrush(QPalette::Disabled, QPalette::Base, brush1);
+        palette10.setBrush(QPalette::Disabled, QPalette::Window, brush1);
+        palette10.setBrush(QPalette::Disabled, QPalette::Shadow, brush);
+        palette10.setBrush(QPalette::Disabled, QPalette::AlternateBase, brush1);
+        palette10.setBrush(QPalette::Disabled, QPalette::ToolTipBase, brush4);
+        palette10.setBrush(QPalette::Disabled, QPalette::ToolTipText, brush);
+#if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
+        palette10.setBrush(QPalette::Disabled, QPalette::PlaceholderText, brush5);
+#endif
+        achromatomalyObservations->setPalette(palette10);
+        achromatomalyObservations->setFrameShape(QFrame::StyledPanel);
+        achromatomalyObservations->setFrameShadow(QFrame::Raised);
+        achromatomalyObservations->setLineWidth(2);
+        achromatomalyObservations->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
+        achromatomalyObservations->setAcceptRichText(true);
+        achromatomalyLabel = new QLabel(tab_10);
+        achromatomalyLabel->setObjectName(QString::fromUtf8("achromatomalyLabel"));
+        achromatomalyLabel->setGeometry(QRect(10, 10, 351, 221));
+        achromatomalyIndexLabel = new QLabel(tab_10);
+        achromatomalyIndexLabel->setObjectName(QString::fromUtf8("achromatomalyIndexLabel"));
+        achromatomalyIndexLabel->setGeometry(QRect(10, 240, 361, 41));
+        tabWidget_2->addTab(tab_10, QString());
         tabWidget->addTab(tab, QString());
         tab_2 = new QWidget();
         tab_2->setObjectName(QString::fromUtf8("tab_2"));
-        protanopiaSimulation = new QRadioButton(tab_2);
-        protanopiaSimulation->setObjectName(QString::fromUtf8("protanopiaSimulation"));
-        protanopiaSimulation->setGeometry(QRect(20, 30, 261, 31));
-        deuteranopiaSimulation = new QRadioButton(tab_2);
-        deuteranopiaSimulation->setObjectName(QString::fromUtf8("deuteranopiaSimulation"));
-        deuteranopiaSimulation->setGeometry(QRect(20, 70, 261, 31));
-        tritanopiaSimulation = new QRadioButton(tab_2);
-        tritanopiaSimulation->setObjectName(QString::fromUtf8("tritanopiaSimulation"));
-        tritanopiaSimulation->setGeometry(QRect(20, 110, 261, 31));
         saveImageButton = new QPushButton(tab_2);
         saveImageButton->setObjectName(QString::fromUtf8("saveImageButton"));
         saveImageButton->setGeometry(QRect(330, 730, 75, 23));
+        verticalLayoutWidget = new QWidget(tab_2);
+        verticalLayoutWidget->setObjectName(QString::fromUtf8("verticalLayoutWidget"));
+        verticalLayoutWidget->setGeometry(QRect(20, 70, 381, 561));
+        verticalLayout = new QVBoxLayout(verticalLayoutWidget);
+        verticalLayout->setSpacing(6);
+        verticalLayout->setContentsMargins(11, 11, 11, 11);
+        verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
+        verticalLayout->setContentsMargins(0, 0, 0, 0);
+        normalSimulation = new QRadioButton(verticalLayoutWidget);
+        normalSimulation->setObjectName(QString::fromUtf8("normalSimulation"));
+        normalSimulation->setChecked(true);
+
+        verticalLayout->addWidget(normalSimulation);
+
+        protanopiaSimulation = new QRadioButton(verticalLayoutWidget);
+        protanopiaSimulation->setObjectName(QString::fromUtf8("protanopiaSimulation"));
+
+        verticalLayout->addWidget(protanopiaSimulation);
+
+        deuteranopiaSimulation = new QRadioButton(verticalLayoutWidget);
+        deuteranopiaSimulation->setObjectName(QString::fromUtf8("deuteranopiaSimulation"));
+
+        verticalLayout->addWidget(deuteranopiaSimulation);
+
+        tritanopiaSimulation = new QRadioButton(verticalLayoutWidget);
+        tritanopiaSimulation->setObjectName(QString::fromUtf8("tritanopiaSimulation"));
+
+        verticalLayout->addWidget(tritanopiaSimulation);
+
+        achromatopsiaSimulation = new QRadioButton(verticalLayoutWidget);
+        achromatopsiaSimulation->setObjectName(QString::fromUtf8("achromatopsiaSimulation"));
+
+        verticalLayout->addWidget(achromatopsiaSimulation);
+
+        protanomalySimulation = new QRadioButton(verticalLayoutWidget);
+        protanomalySimulation->setObjectName(QString::fromUtf8("protanomalySimulation"));
+
+        verticalLayout->addWidget(protanomalySimulation);
+
+        deuteranomalySimulation = new QRadioButton(verticalLayoutWidget);
+        deuteranomalySimulation->setObjectName(QString::fromUtf8("deuteranomalySimulation"));
+
+        verticalLayout->addWidget(deuteranomalySimulation);
+
+        tritanomalySimulation = new QRadioButton(verticalLayoutWidget);
+        tritanomalySimulation->setObjectName(QString::fromUtf8("tritanomalySimulation"));
+
+        verticalLayout->addWidget(tritanomalySimulation);
+
+        achromatomalySimulation = new QRadioButton(verticalLayoutWidget);
+        achromatomalySimulation->setObjectName(QString::fromUtf8("achromatomalySimulation"));
+
+        verticalLayout->addWidget(achromatomalySimulation);
+
+        edgeDetectionCheck = new QCheckBox(tab_2);
+        edgeDetectionCheck->setObjectName(QString::fromUtf8("edgeDetectionCheck"));
+        edgeDetectionCheck->setGeometry(QRect(20, 40, 211, 17));
         tabWidget->addTab(tab_2, QString());
         Vispurple__tfg_editionClass->setCentralWidget(centralWidget);
         mainToolBar = new QToolBar(Vispurple__tfg_editionClass);
@@ -572,6 +1023,7 @@ public:
         QObject::connect(calculateReportButton, SIGNAL(clicked()), Vispurple__tfg_editionClass, SLOT(update_accessibility_index()));
 
         tabWidget->setCurrentIndex(0);
+        tabWidget_2->setCurrentIndex(7);
 
 
         QMetaObject::connectSlotsByName(Vispurple__tfg_editionClass);
@@ -591,25 +1043,52 @@ public:
         label_10->setText(QCoreApplication::translate("Vispurple__tfg_editionClass", "Warning: high rates could affect app or system perform", nullptr));
         refreshAvailableWindowsButton->setText(QCoreApplication::translate("Vispurple__tfg_editionClass", "Confirm", nullptr));
         exportReportButton->setText(QCoreApplication::translate("Vispurple__tfg_editionClass", "Export Report", nullptr));
-        Tritanopia->setTitle(QCoreApplication::translate("Vispurple__tfg_editionClass", "Tritanopia", nullptr));
-        tritanopiaLabel->setText(QCoreApplication::translate("Vispurple__tfg_editionClass", "TextLabel", nullptr));
-        tritanopiaIndexLabel->setText(QCoreApplication::translate("Vispurple__tfg_editionClass", "TextLabel", nullptr));
-        tritanopiaObservations->setPlaceholderText(QCoreApplication::translate("Vispurple__tfg_editionClass", "Write here the observations", nullptr));
-        Protanopia->setTitle(QCoreApplication::translate("Vispurple__tfg_editionClass", "Protanopia", nullptr));
+        calculateReportButton->setText(QCoreApplication::translate("Vispurple__tfg_editionClass", "Calculate", nullptr));
+        label_11->setText(QCoreApplication::translate("Vispurple__tfg_editionClass", "Warning: this proccess can last a few seconds", nullptr));
         protanopiaLabel->setText(QCoreApplication::translate("Vispurple__tfg_editionClass", "TextLabel", nullptr));
         protanopiaIndexLabel->setText(QCoreApplication::translate("Vispurple__tfg_editionClass", "TextLabel", nullptr));
         protanopiaObservations->setPlaceholderText(QCoreApplication::translate("Vispurple__tfg_editionClass", "Write here the observations", nullptr));
-        Deuteranopia->setTitle(QCoreApplication::translate("Vispurple__tfg_editionClass", "Deuteranopia", nullptr));
+        tabWidget_2->setTabText(tabWidget_2->indexOf(tab_3), QCoreApplication::translate("Vispurple__tfg_editionClass", "Protanopia", nullptr));
+        deuteranopiaObservations->setPlaceholderText(QCoreApplication::translate("Vispurple__tfg_editionClass", "Write here the observations", nullptr));
         deuteranopiaLabel->setText(QCoreApplication::translate("Vispurple__tfg_editionClass", "TextLabel", nullptr));
         deuteranopiaIndexLabel->setText(QCoreApplication::translate("Vispurple__tfg_editionClass", "TextLabel", nullptr));
-        deuteranopiaObservations->setPlaceholderText(QCoreApplication::translate("Vispurple__tfg_editionClass", "Write here the observations", nullptr));
-        calculateReportButton->setText(QCoreApplication::translate("Vispurple__tfg_editionClass", "Calculate", nullptr));
-        label_11->setText(QCoreApplication::translate("Vispurple__tfg_editionClass", "Warning: this proccess can last a few seconds", nullptr));
+        tabWidget_2->setTabText(tabWidget_2->indexOf(tab_4), QCoreApplication::translate("Vispurple__tfg_editionClass", "Deuteranopia", nullptr));
+        tritanopiaObservations->setPlaceholderText(QCoreApplication::translate("Vispurple__tfg_editionClass", "Write here the observations", nullptr));
+        tritanopiaLabel->setText(QCoreApplication::translate("Vispurple__tfg_editionClass", "TextLabel", nullptr));
+        tritanopiaIndexLabel->setText(QCoreApplication::translate("Vispurple__tfg_editionClass", "TextLabel", nullptr));
+        tabWidget_2->setTabText(tabWidget_2->indexOf(tab_5), QCoreApplication::translate("Vispurple__tfg_editionClass", "Tritanopia", nullptr));
+        achromatopsiaObservations->setPlaceholderText(QCoreApplication::translate("Vispurple__tfg_editionClass", "Write here the observations", nullptr));
+        achromatopsiaLabel->setText(QCoreApplication::translate("Vispurple__tfg_editionClass", "TextLabel", nullptr));
+        achromatopsiaIndexLabel->setText(QCoreApplication::translate("Vispurple__tfg_editionClass", "TextLabel", nullptr));
+        tabWidget_2->setTabText(tabWidget_2->indexOf(tab_6), QCoreApplication::translate("Vispurple__tfg_editionClass", "Achromatopsia", nullptr));
+        protanomalyObservations->setPlaceholderText(QCoreApplication::translate("Vispurple__tfg_editionClass", "Write here the observations", nullptr));
+        protanomalyLabel->setText(QCoreApplication::translate("Vispurple__tfg_editionClass", "TextLabel", nullptr));
+        protanomalyIndexLabel->setText(QCoreApplication::translate("Vispurple__tfg_editionClass", "TextLabel", nullptr));
+        tabWidget_2->setTabText(tabWidget_2->indexOf(tab_7), QCoreApplication::translate("Vispurple__tfg_editionClass", "Protanomaly", nullptr));
+        deuteranomalyObservations->setPlaceholderText(QCoreApplication::translate("Vispurple__tfg_editionClass", "Write here the observations", nullptr));
+        deuteranomalyLabel->setText(QCoreApplication::translate("Vispurple__tfg_editionClass", "TextLabel", nullptr));
+        deuteranomalyIndexLabel->setText(QCoreApplication::translate("Vispurple__tfg_editionClass", "TextLabel", nullptr));
+        tabWidget_2->setTabText(tabWidget_2->indexOf(tab_8), QCoreApplication::translate("Vispurple__tfg_editionClass", "Deuteranomaly", nullptr));
+        tritanomalyObservations->setPlaceholderText(QCoreApplication::translate("Vispurple__tfg_editionClass", "Write here the observations", nullptr));
+        tritanomalyLabel->setText(QCoreApplication::translate("Vispurple__tfg_editionClass", "TextLabel", nullptr));
+        tritanomalyIndexLabel->setText(QCoreApplication::translate("Vispurple__tfg_editionClass", "TextLabel", nullptr));
+        tabWidget_2->setTabText(tabWidget_2->indexOf(tab_9), QCoreApplication::translate("Vispurple__tfg_editionClass", "Tritanomaly", nullptr));
+        achromatomalyObservations->setPlaceholderText(QCoreApplication::translate("Vispurple__tfg_editionClass", "Write here the observations", nullptr));
+        achromatomalyLabel->setText(QCoreApplication::translate("Vispurple__tfg_editionClass", "TextLabel", nullptr));
+        achromatomalyIndexLabel->setText(QCoreApplication::translate("Vispurple__tfg_editionClass", "TextLabel", nullptr));
+        tabWidget_2->setTabText(tabWidget_2->indexOf(tab_10), QCoreApplication::translate("Vispurple__tfg_editionClass", "Achromatomaly", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(tab), QCoreApplication::translate("Vispurple__tfg_editionClass", "Visual Accessibility Report", nullptr));
+        saveImageButton->setText(QCoreApplication::translate("Vispurple__tfg_editionClass", "Save Image", nullptr));
+        normalSimulation->setText(QCoreApplication::translate("Vispurple__tfg_editionClass", "Standard vision", nullptr));
         protanopiaSimulation->setText(QCoreApplication::translate("Vispurple__tfg_editionClass", "Protanopia simulation", nullptr));
         deuteranopiaSimulation->setText(QCoreApplication::translate("Vispurple__tfg_editionClass", "Deuteranopia simulation", nullptr));
         tritanopiaSimulation->setText(QCoreApplication::translate("Vispurple__tfg_editionClass", "Tritanopia simulation", nullptr));
-        saveImageButton->setText(QCoreApplication::translate("Vispurple__tfg_editionClass", "Save Image", nullptr));
+        achromatopsiaSimulation->setText(QCoreApplication::translate("Vispurple__tfg_editionClass", "Achromatopsia simulation", nullptr));
+        protanomalySimulation->setText(QCoreApplication::translate("Vispurple__tfg_editionClass", "Protanomaly simulation", nullptr));
+        deuteranomalySimulation->setText(QCoreApplication::translate("Vispurple__tfg_editionClass", "Deuteranomaly simulation", nullptr));
+        tritanomalySimulation->setText(QCoreApplication::translate("Vispurple__tfg_editionClass", "Tritanomaly simulation", nullptr));
+        achromatomalySimulation->setText(QCoreApplication::translate("Vispurple__tfg_editionClass", "Achromatomaly simulation", nullptr));
+        edgeDetectionCheck->setText(QCoreApplication::translate("Vispurple__tfg_editionClass", "Edge detection", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(tab_2), QCoreApplication::translate("Vispurple__tfg_editionClass", "Simulation", nullptr));
     } // retranslateUi
 

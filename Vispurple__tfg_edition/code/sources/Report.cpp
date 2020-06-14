@@ -145,6 +145,71 @@ std::string Report::get_tritanopia_accessibility_index()
 }
 
 
+std::string Report::get_achromatopsia_accessibility_index()
+{
+    Image original_sobel(*original);
+    achromatopsia_sobel = std::make_shared<Image>(*original);
+
+    original_sobel.sobel_colour();
+    achromatopsia_sobel->simulate_achromatopsia();
+    achromatopsia_sobel->sobel_colour();
+
+    return std::to_string(achromatopsia_sobel->compare(original_sobel)) + "%";
+}
+
+
+std::string Report::get_protanomaly_accessibility_index()
+{
+    Image original_sobel(*original);
+    protanomaly_sobel = std::make_shared<Image>(*original);
+
+    original_sobel.sobel_colour();
+    protanomaly_sobel->simulate_protanomaly();
+    protanomaly_sobel->sobel_colour();
+
+    return std::to_string(protanomaly_sobel->compare(original_sobel)) + "%";
+}
+
+
+std::string Report::get_deuteranomaly_accessibility_index()
+{
+    Image original_sobel(*original);
+    deuteranomaly_sobel = std::make_shared<Image>(*original);
+
+    original_sobel.sobel_colour();
+    deuteranomaly_sobel->simulate_deuteranomaly();
+    deuteranomaly_sobel->sobel_colour();
+
+    return std::to_string(deuteranomaly_sobel->compare(original_sobel)) + "%";
+}
+
+
+std::string Report::get_tritanomaly_accessibility_index()
+{
+    Image original_sobel(*original);
+    tritanomaly_sobel = std::make_shared<Image>(*original);
+
+    original_sobel.sobel_colour();
+    tritanomaly_sobel->simulate_tritanomaly();
+    tritanomaly_sobel->sobel_colour();
+
+    return std::to_string(tritanomaly_sobel->compare(original_sobel)) + "%";
+}
+
+
+std::string Report::get_achromatomaly_accessibility_index()
+{
+    Image original_sobel(*original);
+    achromatomaly_sobel = std::make_shared<Image>(*original);
+
+    original_sobel.sobel_colour();
+    achromatomaly_sobel->simulate_achromatomaly();
+    achromatomaly_sobel->sobel_colour();
+
+    return std::to_string(achromatomaly_sobel->compare(original_sobel)) + "%";
+}
+
+
 std::shared_ptr<Image>& Report::get_protanopia_sobel()
 {
     return protanopia_sobel;
@@ -160,6 +225,31 @@ std::shared_ptr<Image>& Report::get_deuteranopia_sobel()
 std::shared_ptr<Image>& Report::get_tritanopia_sobel()
 {
     return tritanopia_sobel;
+}
+
+std::shared_ptr<Image>& Report::get_achromatopsia_sobel()
+{
+    return achromatopsia_sobel;
+}
+
+std::shared_ptr<Image>& Report::get_protanomaly_sobel()
+{
+    return protanomaly_sobel;
+}
+
+std::shared_ptr<Image>& Report::get_deuteranomaly_sobel()
+{
+    return deuteranomaly_sobel;
+}
+
+std::shared_ptr<Image>& Report::get_tritanomaly_sobel()
+{
+    return tritanomaly_sobel;
+}
+
+std::shared_ptr<Image>& Report::get_achromatomaly_sobel()
+{
+    return achromatomaly_sobel;
 }
 
 void Report::set_original_image(std::shared_ptr<Image>& original)
@@ -180,4 +270,29 @@ void Report::add_deuteranopia_comments(std::string comments)
 void Report::add_tritanopia_comments(std::string comments)
 {
     replace(content, "tritanopiaComments", comments);
+}
+
+void Report::add_achromatopsia_comments(std::string comments)
+{
+    replace(content, "achromatopsiaComments", comments);
+}
+
+void Report::add_protanomaly_comments(std::string comments)
+{
+    replace(content, "protanomalyComments", comments);
+}
+
+void Report::add_deuteranomaly_comments(std::string comments)
+{
+    replace(content, "deuteranomalyComments", comments);
+}
+
+void Report::add_tritanomaly_comments(std::string comments)
+{
+    replace(content, "tritanomalyComments", comments);
+}
+
+void Report::add_achromatomaly_comments(std::string comments)
+{
+    replace(content, "achromatomalyComments", comments);
 }

@@ -351,6 +351,47 @@ void Image::simulate_tritanopia()
     }
 }
 
+void Image::simulate_achromatopsia()
+{
+    for (auto& pixel : pixels)
+    {
+        pixel.simulate_achromatopsia();
+    }
+}
+
+void Image::simulate_protanomaly()
+{
+    for (auto& pixel : pixels)
+    {
+        pixel.simulate_protanomaly();
+    }
+}
+
+void Image::simulate_deuteranomaly()
+{
+    for (auto& pixel : pixels)
+    {
+        pixel.simulate_deuteranomaly();
+    }
+}
+
+void Image::simulate_tritanomaly()
+{
+    for (auto& pixel : pixels)
+    {
+        pixel.simulate_tritanomaly();
+    }
+}
+
+
+void Image::simulate_achromatomaly()
+{
+    for (auto& pixel : pixels)
+    {
+        pixel.simulate_achromatomaly();
+    }
+}
+
 float Image::colour_difference(Pixel& first, Pixel& second)
 {
     first.convert_rgb_to_luv();

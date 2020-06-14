@@ -124,6 +124,31 @@ public:
     void simulate_tritanopia();
 
     /**
+    @brief Converts the rgb components into a achromatopsia simulation
+    */
+    void simulate_achromatopsia();
+
+    /**
+    @brief Converts the rgb components into a protanomaly simulation
+    */
+    void simulate_protanomaly();
+
+    /**
+    @brief Converts the rgb components into a deuteranomaly simulation
+    */
+    void simulate_deuteranomaly();
+
+    /**
+    @brief Converts the rgb components into a tritanomaly simulation
+    */
+    void simulate_tritanomaly();
+
+    /**
+    @brief Converts the rgb components into a achromatomaly simulation
+    */
+    void simulate_achromatomaly();
+
+    /**
     @brief Applies the daltonization for protanopia
     */
     void correct_protanopia()
@@ -159,10 +184,23 @@ public:
     void convert_xyz_to_xyzd(float* buffer);
 
     /**
+    @brief Converts the given xyz values into a xyz tritanopia simulation values. New values are stored in the given buffer
+    @param buffer The buffer where store the converted values. Must have size 3 or greater.
+    */
+    void convert_xyz_to_xyzt(float* buffer);
+
+    /**
+    @brief Converts the given xyz values into a xyz modified simulation values. New values are stored in the given buffer
+    @param buffer The buffer where store the converted values. Must have size 3 or greater.
+    @param simulation_modifiers The specific modifiers of this affection
+    */
+    void convert_xyz_to_xyzs(float* buffer, float * simulation_modifiers);
+
+    /**
     @brief Converts the given xyz values into a rgb color space. New values are stored in the rgb_components field
     @param buffer The buffer where store the converted values. Must have size 3 or greater.
     */
-    void convert_xyz_to_rgb(float* buffer);
+    void convert_xyz_to_rgb(float* buffer);   
 
     /**
     @brief Converts the given xyz values into a xyz protanopia simulation values. New values are stored in the given buffer
@@ -182,5 +220,11 @@ public:
     @param max The max value
     */
     float clamp(float value, float min, float max);
+
+    /**
+    @brief Anomalyze a simulation. New values are stored in the rgb_components field
+    @param original_values The rgb_values before any simulation
+    */
+    void anomalyze(float* original_values);
 
 };

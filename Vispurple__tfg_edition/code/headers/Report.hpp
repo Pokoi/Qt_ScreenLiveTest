@@ -47,6 +47,11 @@ class  Report
     std::shared_ptr<Image> protanopia_sobel;
     std::shared_ptr<Image> deuteranopia_sobel;
     std::shared_ptr<Image> tritanopia_sobel;
+    std::shared_ptr<Image> achromatopsia_sobel;
+    std::shared_ptr<Image> protanomaly_sobel;
+    std::shared_ptr<Image> deuteranomaly_sobel;
+    std::shared_ptr<Image> tritanomaly_sobel;
+    std::shared_ptr<Image> achromatomaly_sobel;
 
 public:
 
@@ -94,6 +99,36 @@ public:
     std::string get_tritanopia_accessibility_index();
 
     /**
+    @brief Calculates the achromatopsia visual accessibility index
+    @return The index
+    */
+    std::string get_achromatopsia_accessibility_index();
+
+    /**
+    @brief Calculates the protanomaly visual accessibility index
+    @return The index
+    */
+    std::string get_protanomaly_accessibility_index();
+
+    /**
+    @brief Calculates the deuteranomaly visual accessibility index
+    @return The index
+    */
+    std::string get_deuteranomaly_accessibility_index();
+
+    /**
+    @brief Calculates the tritanomaly visual accessibility index
+    @return The index
+    */
+    std::string get_tritanomaly_accessibility_index();
+
+    /**
+    @brief Calculates the achromatomaly visual accessibility index
+    @return The index
+    */
+    std::string get_achromatomaly_accessibility_index();
+
+    /**
     @brief Gets a reference to the protanopia sobel image
     @return The reference
     */
@@ -110,6 +145,36 @@ public:
     @return The reference
     */
     std::shared_ptr<Image>& get_tritanopia_sobel();
+
+    /**
+    @brief Gets a reference to the achromatopsia sobel image
+    @return The reference
+    */
+    std::shared_ptr<Image>& get_achromatopsia_sobel();
+
+    /**
+    @brief Gets a reference to the protanomaly sobel image
+    @return The reference
+    */
+    std::shared_ptr<Image>& get_protanomaly_sobel();
+
+    /**
+    @brief Gets a reference to the deuteranomaly sobel image
+    @return The reference
+    */
+    std::shared_ptr<Image>& get_deuteranomaly_sobel();
+
+    /**
+    @brief Gets a reference to the tritanomaly sobel image
+    @return The reference
+    */
+    std::shared_ptr<Image>& get_tritanomaly_sobel();
+
+    /**
+    @brief Gets a reference to the achromatomaly sobel image
+    @return The reference
+    */
+    std::shared_ptr<Image>& get_achromatomaly_sobel();
 
     /**
     @brief Sets the original image reference
@@ -135,5 +200,34 @@ public:
     */
     void add_tritanopia_comments(std::string comments);
 
+    /**
+    @brief Adds the comments for achromatopsia
+    @param comments The comments
+    */
+    void add_achromatopsia_comments(std::string comments);
+
+    /**
+    @brief Adds the comments for protanomaly
+    @param comments The comments
+    */
+    void add_protanomaly_comments(std::string comments);
+
+    /**
+    @brief Adds the comments for deuteranomaly
+    @param comments The comments
+    */
+    void add_deuteranomaly_comments(std::string comments);
+
+    /**
+    @brief Adds the comments for tritanomaly
+    @param comments The comments
+    */
+    void add_tritanomaly_comments(std::string comments);
+
+    /**
+    @brief Adds the comments for achromatomaly
+    @param comments The comments
+    */
+    void add_achromatomaly_comments(std::string comments);
 
 };

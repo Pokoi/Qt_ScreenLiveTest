@@ -145,6 +145,7 @@ void Vispurple__tfg_edition::update_accessibility_index()
     ui.protanopiaIndexLabel->setText(report.get_protanopia_accessibility_index().c_str());
     ui.deuteranopiaIndexLabel->setText(report.get_deuteranopia_accessibility_index().c_str());
     ui.tritanopiaIndexLabel->setText(report.get_tritanopia_accessibility_index().c_str());
+    ui.achromatopsiaIndexLabel->setText()
 
     ui.protanopiaLabel->setPixmap(QPixmap::fromImage(report.get_protanopia_sobel()->convert_to_qimage().scaled(ui.protanopiaLabel->width(), ui.protanopiaLabel->height(), Qt::KeepAspectRatio)));
     ui.deuteranopiaLabel->setPixmap(QPixmap::fromImage(report.get_deuteranopia_sobel()->convert_to_qimage().scaled(ui.deuteranopiaLabel->width(), ui.deuteranopiaLabel->height(), Qt::KeepAspectRatio)));
@@ -168,7 +169,32 @@ void Vispurple__tfg_edition::simulate()
     {
         aux.simulate_tritanopia();
     }
-    
+    else if (ui.achromatopsiaSimulation->isChecked())
+    {
+        aux.simulate_achromatopsia();
+    }
+    else if (ui.protanomalySimulation->isChecked())
+    {
+        aux.simulate_protanomaly();
+    }
+    else if (ui.deuteranomalySimulation->isChecked())
+    {
+        aux.simulate_deuteranomaly();
+    }
+    else if (ui.tritanomalySimulation->isChecked())
+    {
+        aux.simulate_tritanomaly();
+    }
+    else if (ui.achromatomalySimulation->isChecked())
+    {
+        aux.simulate_achromatomaly();
+    }    
+
+    if (ui.edgeDetectionCheck->isChecked())
+    {
+        aux.sobel_colour();
+    }
+
     ui.previsualizationLabel->setPixmap(QPixmap::fromImage(aux.convert_to_qimage()).scaled(ui.previsualizationLabel->width(), ui.previsualizationLabel->height(), Qt::KeepAspectRatio));
 
 }

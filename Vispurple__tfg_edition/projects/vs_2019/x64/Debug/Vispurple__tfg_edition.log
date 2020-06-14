@@ -1,2 +1,6 @@
-﻿  Pixel.cpp
+﻿  uic ..\..\resources\vispurple__tfg_edition.ui
+  Report.cpp
+  main.cpp
+  vispurple__tfg_edition.cpp
+  moc_vispurple__tfg_edition.cpp
   Vispurple__tfg_edition.vcxproj -> D:\Repositorios\Vispurple\Vispurple__tfg_edition\projects\vs_2019\x64\Debug\Vispurple__tfg_edition.exe

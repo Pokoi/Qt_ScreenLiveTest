@@ -195,6 +195,31 @@ public:
     void simulate_tritanopia();
 
     /**
+    @brief Apply a achromatopsia simulation
+    */
+    void simulate_achromatopsia();
+
+    /**
+    @brief Apply a protanomaly simulation
+    */
+    void simulate_protanomaly();
+
+    /**
+    @brief Apply a deuteranomaly simulation
+    */
+    void simulate_deuteranomaly();
+
+    /**
+    @brief Apply a tritanomaly simulation
+    */
+    void simulate_tritanomaly();
+
+    /**
+    @brief Apply a achromatomaly simulation
+    */
+    void simulate_achromatomaly();
+
+    /**
     @brief Calculates the squared difference between the color of two pixels
     */
     float colour_difference(Pixel& first, Pixel& second);
