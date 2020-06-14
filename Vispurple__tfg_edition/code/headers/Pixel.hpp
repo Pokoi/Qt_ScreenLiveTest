@@ -151,8 +151,8 @@ public:
     /**
     @brief Applies the daltonization for protanopia
     */
-    void correct_protanopia()
-    {}
+    void correct_protanopia();
+    
 
     /**
     @brief Applies the daltonization for deuteranopia

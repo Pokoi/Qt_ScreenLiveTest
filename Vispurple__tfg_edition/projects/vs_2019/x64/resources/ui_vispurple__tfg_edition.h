@@ -91,6 +91,8 @@ public:
     QRadioButton *deuteranomalySimulation;
     QRadioButton *tritanomalySimulation;
     QRadioButton *achromatomalySimulation;
+    QRadioButton *protanopiaCorrection;
+    QRadioButton *deuteranopiaCorrection;
     QCheckBox *edgeDetectionCheck;
     QToolBar *mainToolBar;
     QStatusBar *statusBar;
@@ -99,7 +101,7 @@ public:
     {
         if (Vispurple__tfg_editionClass->objectName().isEmpty())
             Vispurple__tfg_editionClass->setObjectName(QString::fromUtf8("Vispurple__tfg_editionClass"));
-        Vispurple__tfg_editionClass->resize(1269, 824);
+        Vispurple__tfg_editionClass->resize(1260, 824);
         QSizePolicy sizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
         sizePolicy.setHorizontalStretch(0);
         sizePolicy.setVerticalStretch(0);
@@ -948,6 +950,9 @@ public:
         saveImageButton = new QPushButton(tab_2);
         saveImageButton->setObjectName(QString::fromUtf8("saveImageButton"));
         saveImageButton->setGeometry(QRect(330, 730, 75, 23));
+        saveImageButton->setCheckable(false);
+        saveImageButton->setAutoDefault(false);
+        saveImageButton->setFlat(false);
         verticalLayoutWidget = new QWidget(tab_2);
         verticalLayoutWidget->setObjectName(QString::fromUtf8("verticalLayoutWidget"));
         verticalLayoutWidget->setGeometry(QRect(20, 70, 381, 561));
@@ -1002,10 +1007,23 @@ public:
 
         verticalLayout->addWidget(achromatomalySimulation);
 
+        protanopiaCorrection = new QRadioButton(verticalLayoutWidget);
+        protanopiaCorrection->setObjectName(QString::fromUtf8("protanopiaCorrection"));
+
+        verticalLayout->addWidget(protanopiaCorrection);
+
+        deuteranopiaCorrection = new QRadioButton(verticalLayoutWidget);
+        deuteranopiaCorrection->setObjectName(QString::fromUtf8("deuteranopiaCorrection"));
+
+        verticalLayout->addWidget(deuteranopiaCorrection);
+
         edgeDetectionCheck = new QCheckBox(tab_2);
         edgeDetectionCheck->setObjectName(QString::fromUtf8("edgeDetectionCheck"));
         edgeDetectionCheck->setGeometry(QRect(20, 40, 211, 17));
         tabWidget->addTab(tab_2, QString());
+        verticalLayoutWidget->raise();
+        edgeDetectionCheck->raise();
+        saveImageButton->raise();
         Vispurple__tfg_editionClass->setCentralWidget(centralWidget);
         mainToolBar = new QToolBar(Vispurple__tfg_editionClass);
         mainToolBar->setObjectName(QString::fromUtf8("mainToolBar"));
@@ -1021,9 +1039,11 @@ public:
         QObject::connect(exportReportButton, SIGNAL(clicked()), Vispurple__tfg_editionClass, SLOT(export_report()));
         QObject::connect(refreshAvailableWindowsButton, SIGNAL(clicked()), Vispurple__tfg_editionClass, SLOT(set_delta_time()));
         QObject::connect(calculateReportButton, SIGNAL(clicked()), Vispurple__tfg_editionClass, SLOT(update_accessibility_index()));
+        QObject::connect(saveImageButton, SIGNAL(clicked()), Vispurple__tfg_editionClass, SLOT(save_image()));
 
         tabWidget->setCurrentIndex(0);
-        tabWidget_2->setCurrentIndex(7);
+        tabWidget_2->setCurrentIndex(0);
+        saveImageButton->setDefault(false);
 
 
         QMetaObject::connectSlotsByName(Vispurple__tfg_editionClass);
@@ -1045,36 +1065,36 @@ public:
         exportReportButton->setText(QCoreApplication::translate("Vispurple__tfg_editionClass", "Export Report", nullptr));
         calculateReportButton->setText(QCoreApplication::translate("Vispurple__tfg_editionClass", "Calculate", nullptr));
         label_11->setText(QCoreApplication::translate("Vispurple__tfg_editionClass", "Warning: this proccess can last a few seconds", nullptr));
-        protanopiaLabel->setText(QCoreApplication::translate("Vispurple__tfg_editionClass", "TextLabel", nullptr));
+        protanopiaLabel->setText(QString());
         protanopiaIndexLabel->setText(QCoreApplication::translate("Vispurple__tfg_editionClass", "TextLabel", nullptr));
         protanopiaObservations->setPlaceholderText(QCoreApplication::translate("Vispurple__tfg_editionClass", "Write here the observations", nullptr));
         tabWidget_2->setTabText(tabWidget_2->indexOf(tab_3), QCoreApplication::translate("Vispurple__tfg_editionClass", "Protanopia", nullptr));
         deuteranopiaObservations->setPlaceholderText(QCoreApplication::translate("Vispurple__tfg_editionClass", "Write here the observations", nullptr));
-        deuteranopiaLabel->setText(QCoreApplication::translate("Vispurple__tfg_editionClass", "TextLabel", nullptr));
+        deuteranopiaLabel->setText(QString());
         deuteranopiaIndexLabel->setText(QCoreApplication::translate("Vispurple__tfg_editionClass", "TextLabel", nullptr));
         tabWidget_2->setTabText(tabWidget_2->indexOf(tab_4), QCoreApplication::translate("Vispurple__tfg_editionClass", "Deuteranopia", nullptr));
         tritanopiaObservations->setPlaceholderText(QCoreApplication::translate("Vispurple__tfg_editionClass", "Write here the observations", nullptr));
-        tritanopiaLabel->setText(QCoreApplication::translate("Vispurple__tfg_editionClass", "TextLabel", nullptr));
+        tritanopiaLabel->setText(QString());
         tritanopiaIndexLabel->setText(QCoreApplication::translate("Vispurple__tfg_editionClass", "TextLabel", nullptr));
         tabWidget_2->setTabText(tabWidget_2->indexOf(tab_5), QCoreApplication::translate("Vispurple__tfg_editionClass", "Tritanopia", nullptr));
         achromatopsiaObservations->setPlaceholderText(QCoreApplication::translate("Vispurple__tfg_editionClass", "Write here the observations", nullptr));
-        achromatopsiaLabel->setText(QCoreApplication::translate("Vispurple__tfg_editionClass", "TextLabel", nullptr));
+        achromatopsiaLabel->setText(QString());
         achromatopsiaIndexLabel->setText(QCoreApplication::translate("Vispurple__tfg_editionClass", "TextLabel", nullptr));
         tabWidget_2->setTabText(tabWidget_2->indexOf(tab_6), QCoreApplication::translate("Vispurple__tfg_editionClass", "Achromatopsia", nullptr));
         protanomalyObservations->setPlaceholderText(QCoreApplication::translate("Vispurple__tfg_editionClass", "Write here the observations", nullptr));
-        protanomalyLabel->setText(QCoreApplication::translate("Vispurple__tfg_editionClass", "TextLabel", nullptr));
+        protanomalyLabel->setText(QString());
         protanomalyIndexLabel->setText(QCoreApplication::translate("Vispurple__tfg_editionClass", "TextLabel", nullptr));
         tabWidget_2->setTabText(tabWidget_2->indexOf(tab_7), QCoreApplication::translate("Vispurple__tfg_editionClass", "Protanomaly", nullptr));
         deuteranomalyObservations->setPlaceholderText(QCoreApplication::translate("Vispurple__tfg_editionClass", "Write here the observations", nullptr));
-        deuteranomalyLabel->setText(QCoreApplication::translate("Vispurple__tfg_editionClass", "TextLabel", nullptr));
+        deuteranomalyLabel->setText(QString());
         deuteranomalyIndexLabel->setText(QCoreApplication::translate("Vispurple__tfg_editionClass", "TextLabel", nullptr));
         tabWidget_2->setTabText(tabWidget_2->indexOf(tab_8), QCoreApplication::translate("Vispurple__tfg_editionClass", "Deuteranomaly", nullptr));
         tritanomalyObservations->setPlaceholderText(QCoreApplication::translate("Vispurple__tfg_editionClass", "Write here the observations", nullptr));
-        tritanomalyLabel->setText(QCoreApplication::translate("Vispurple__tfg_editionClass", "TextLabel", nullptr));
+        tritanomalyLabel->setText(QString());
         tritanomalyIndexLabel->setText(QCoreApplication::translate("Vispurple__tfg_editionClass", "TextLabel", nullptr));
         tabWidget_2->setTabText(tabWidget_2->indexOf(tab_9), QCoreApplication::translate("Vispurple__tfg_editionClass", "Tritanomaly", nullptr));
         achromatomalyObservations->setPlaceholderText(QCoreApplication::translate("Vispurple__tfg_editionClass", "Write here the observations", nullptr));
-        achromatomalyLabel->setText(QCoreApplication::translate("Vispurple__tfg_editionClass", "TextLabel", nullptr));
+        achromatomalyLabel->setText(QString());
         achromatomalyIndexLabel->setText(QCoreApplication::translate("Vispurple__tfg_editionClass", "TextLabel", nullptr));
         tabWidget_2->setTabText(tabWidget_2->indexOf(tab_10), QCoreApplication::translate("Vispurple__tfg_editionClass", "Achromatomaly", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(tab), QCoreApplication::translate("Vispurple__tfg_editionClass", "Visual Accessibility Report", nullptr));
@@ -1088,6 +1108,8 @@ public:
         deuteranomalySimulation->setText(QCoreApplication::translate("Vispurple__tfg_editionClass", "Deuteranomaly simulation", nullptr));
         tritanomalySimulation->setText(QCoreApplication::translate("Vispurple__tfg_editionClass", "Tritanomaly simulation", nullptr));
         achromatomalySimulation->setText(QCoreApplication::translate("Vispurple__tfg_editionClass", "Achromatomaly simulation", nullptr));
+        protanopiaCorrection->setText(QCoreApplication::translate("Vispurple__tfg_editionClass", "Protanopia Correction", nullptr));
+        deuteranopiaCorrection->setText(QCoreApplication::translate("Vispurple__tfg_editionClass", "Deuteranopia Correction", nullptr));
         edgeDetectionCheck->setText(QCoreApplication::translate("Vispurple__tfg_editionClass", "Edge detection", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(tab_2), QCoreApplication::translate("Vispurple__tfg_editionClass", "Simulation", nullptr));
     } // retranslateUi

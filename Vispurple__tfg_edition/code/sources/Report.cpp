@@ -58,13 +58,24 @@ void Report::export_to(const char* exportationPath)
     Image protanopia(*original);
     Image deuteranopia(*original);
     Image tritanopia(*original);
+    Image achromatopsia(*original);
+    Image protanomaly(*original);
+    Image deuteranomaly(*original);
+    Image tritanomaly(*original);
+    Image achromatomaly(*original);
+
     Image copy_original(*original);
 
     protanopia.simulate_protanopia();
     deuteranopia.simulate_deuteranopia();
     tritanopia.simulate_tritanopia();
-    copy_original.sobel_colour();
+    achromatopsia.simulate_achromatopsia();
+    protanomaly.simulate_protanomaly();
+    deuteranomaly.simulate_deuteranomaly();
+    tritanomaly.simulate_tritanomaly();
+    achromatomaly.simulate_achromatomaly();
 
+    copy_original.sobel_colour();
 
     original->export_image("../../generated/report/images/original.png");
     copy_original.export_image("../../generated/report/images/originalSobel.png");
@@ -72,16 +83,32 @@ void Report::export_to(const char* exportationPath)
     protanopia.export_image("../../generated/report/images/protanopia.png");
     deuteranopia.export_image("../../generated/report/images/deuteranopia.png");
     tritanopia.export_image("../../generated/report/images/tritanopia.png");
+    achromatopsia.export_image("../../generated/report/images/achromatopsia.png");
+    protanomaly.export_image("../../generated/report/images/protanomaly.png");
+    deuteranomaly.export_image("../../generated/report/images/deuteranomaly.png");
+    tritanomaly.export_image("../../generated/report/images/tritanomaly.png");
+    achromatomaly.export_image("../../generated/report/images/achromatomaly.png");
 
     protanopia.sobel_colour();
     deuteranopia.sobel_colour();
     tritanopia.sobel_colour();
+    achromatopsia.sobel_colour();
+    protanomaly.sobel_colour();
+    deuteranomaly.sobel_colour();
+    tritanomaly.sobel_colour();
+    achromatomaly.sobel_colour();
 
     protanopia.export_image("../../generated/report/images/protanopiaSobel.png");
     deuteranopia.export_image("../../generated/report/images/deuteranopiaSobel.png");
     tritanopia.export_image("../../generated/report/images/tritanopiaSobel.png");
+    achromatopsia.export_image("../../generated/report/images/achromatopsiaSobel.png");
+    protanomaly.export_image("../../generated/report/images/protanomalySobel.png");
+    deuteranomaly.export_image("../../generated/report/images/deuteranomalySobel.png");
+    tritanomaly.export_image("../../generated/report/images/tritanomalySobel.png");
+    achromatomaly.export_image("../../generated/report/images/achromatomalySobel.png");
 
-    replace(content, "logoSource", "../../generated/report/images/vispurple_banner.png");
+    replace(content, "logoSource", "../../generated/report/images/vispurple.svg");
+    
     replace(content, "originalSource", "../../generated/report/images/original.png");
     replace(content, "originalSobelSource", "../../generated/report/images/originalSobel.png");
     replace(content, "protanopiaSource", "../../generated/report/images/protanopia.png");
@@ -90,9 +117,25 @@ void Report::export_to(const char* exportationPath)
     replace(content, "deuteranopiaSobelSource", "../../generated/report/images/deuteranopiaSobel.png");
     replace(content, "tritanopiaSource", "../../generated/report/images/tritanopia.png");
     replace(content, "tritanopiaSobelSource", "../../generated/report/images/tritanopiaSobel.png");
+    replace(content, "achromatopsiaSource", "../../generated/report/images/achromatopsia.png");
+    replace(content, "achromatopsiaSobelSource", "../../generated/report/images/achromatopsiaSobel.png");
+    replace(content, "protanomalySource", "../../generated/report/images/protanomaly.png");
+    replace(content, "protanomalySobelSource", "../../generated/report/images/protanomalySobel.png");
+    replace(content, "deuteranomalySource", "../../generated/report/images/deuteranomaly.png");
+    replace(content, "deuteranomalySobelSource", "../../generated/report/images/deuteranomalySobel.png");
+    replace(content, "tritanomalySource", "../../generated/report/images/tritanomaly.png");
+    replace(content, "tritanomalySobelSource", "../../generated/report/images/tritanomalySobel.png");
+    replace(content, "achromatomalySource", "../../generated/report/images/achromatomaly.png");
+    replace(content, "achromatomalySobelSource", "../../generated/report/images/achromatomalySobel.png");
+    
     replace(content, "protanopiaIndex", get_protanopia_accessibility_index());
     replace(content, "deuteranopiaIndex", get_deuteranopia_accessibility_index());
     replace(content, "tritanopiaIndex", get_tritanopia_accessibility_index());
+    replace(content, "achromatopsiaIndex", get_achromatopsia_accessibility_index());
+    replace(content, "protanomalyIndex", get_protanomaly_accessibility_index());
+    replace(content, "deuteranomalyIndex", get_deuteranomaly_accessibility_index());
+    replace(content, "tritanomalyIndex", get_tritanomaly_accessibility_index());
+    replace(content, "achromatomalyIndex", get_achromatomaly_accessibility_index());
 
     QPrinter printer(QPrinter::PrinterResolution);
     printer.setOutputFormat(QPrinter::PdfFormat);
@@ -115,7 +158,7 @@ std::string Report::get_protanopia_accessibility_index()
     protanopia_sobel->simulate_protanopia();
     protanopia_sobel->sobel_colour();
 
-    return std::to_string(protanopia_sobel->compare(original_sobel)) + "%";
+    return std::to_string(protanopia_sobel->compare(original_sobel)) + "%";    
 }
 
 
@@ -259,40 +302,56 @@ void Report::set_original_image(std::shared_ptr<Image>& original)
 
 void Report::add_protanopia_comments(std::string comments)
 {
+    comments = comments == "" ? " " : comments;
+
     replace(content, "protanopiaComments", comments);
 }
 
 void Report::add_deuteranopia_comments(std::string comments)
 {
+    comments = comments == "" ? " " : comments;
+
     replace(content, "deuteranopiaComments", comments);
 }
 
 void Report::add_tritanopia_comments(std::string comments)
 {
+    comments = comments == "" ? " " : comments;
+
     replace(content, "tritanopiaComments", comments);
 }
 
 void Report::add_achromatopsia_comments(std::string comments)
 {
+    comments = comments == "" ? " " : comments;
+
     replace(content, "achromatopsiaComments", comments);
 }
 
 void Report::add_protanomaly_comments(std::string comments)
 {
+    comments = comments == "" ? " " : comments;
+
     replace(content, "protanomalyComments", comments);
 }
 
 void Report::add_deuteranomaly_comments(std::string comments)
 {
+    comments = comments == "" ? " " : comments;
+
     replace(content, "deuteranomalyComments", comments);
 }
 
 void Report::add_tritanomaly_comments(std::string comments)
 {
+    comments = comments == "" ? " " : comments;
+
     replace(content, "tritanomalyComments", comments);
 }
 
 void Report::add_achromatomaly_comments(std::string comments)
 {
+    comments = comments == "" ? " " : comments;
+
     replace(content, "achromatomalyComments", comments);
 }

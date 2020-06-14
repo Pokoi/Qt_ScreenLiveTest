@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1269</width>
+    <width>1260</width>
     <height>824</height>
    </rect>
   </property>
@@ -5630,6 +5630,18 @@
       <property name="text">
        <string>Save Image</string>
       </property>
+      <property name="checkable">
+       <bool>false</bool>
+      </property>
+      <property name="autoDefault">
+       <bool>false</bool>
+      </property>
+      <property name="default">
+       <bool>false</bool>
+      </property>
+      <property name="flat">
+       <bool>false</bool>
+      </property>
      </widget>
      <widget class="QWidget" name="verticalLayoutWidget">
       <property name="geometry">
@@ -5707,6 +5719,20 @@
          </property>
         </widget>
        </item>
+       <item>
+        <widget class="QRadioButton" name="protanopiaCorrection">
+         <property name="text">
+          <string>Protanopia Correction</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QRadioButton" name="deuteranopiaCorrection">
+         <property name="text">
+          <string>Deuteranopia Correction</string>
+         </property>
+        </widget>
+       </item>
       </layout>
      </widget>
      <widget class="QCheckBox" name="edgeDetectionCheck">
@@ -5722,6 +5748,9 @@
        <string>Edge detection</string>
       </property>
      </widget>
+     <zorder>verticalLayoutWidget</zorder>
+     <zorder>edgeDetectionCheck</zorder>
+     <zorder>saveImageButton</zorder>
     </widget>
    </widget>
   </widget>
@@ -5836,6 +5865,22 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>saveImageButton</sender>
+   <signal>clicked()</signal>
+   <receiver>Vispurple__tfg_editionClass</receiver>
+   <slot>save_image()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1189</x>
+     <y>778</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>707</x>
+     <y>772</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>update_available_windows()</slot>
@@ -5844,5 +5889,6 @@
   <slot>export_report()</slot>
   <slot>select_current_window()</slot>
   <slot>update_accessibility_index()</slot>
+  <slot>save_image()</slot>
  </slots>
 </ui>

@@ -220,6 +220,16 @@ public:
     void simulate_achromatomaly();
 
     /**
+    @brief Contrarrest the effects of protanopia
+    */
+    void correct_protanopia();
+
+    /**
+    @brief Contrarrest the effects of deuteranopia
+    */
+    void correct_deuteranopia();
+
+    /**
     @brief Calculates the squared difference between the color of two pixels
     */
     float colour_difference(Pixel& first, Pixel& second);

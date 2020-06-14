@@ -1,5 +1,34 @@
-#include "vispurple__tfg_edition.h"
+/*
+ * File: vispurple__tfg_edition.cpp
+ * File Created: Thursday, 4th June 2020
+ * ––––––––––––––––––––––––
+ * Author: Jesus Fermin, 'Pokoi', Villar  (hello@pokoidev.com)
+ * ––––––––––––––––––––––––
+ * MIT License
+ *
+ * Copyright (c) 2020 Pokoidev
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy of
+ * this software and associated documentation files (the "Software"), to deal in
+ * the Software without restriction, including without limitation the rights to
+ * use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies
+ * of the Software, and to permit persons to whom the Software is furnished to do
+ * so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ */
 
+#include "vispurple__tfg_edition.h"
+#include <ctime>
 
 Vispurple__tfg_edition::Vispurple__tfg_edition(QWidget *parent)
     : 
@@ -123,14 +152,20 @@ void Vispurple__tfg_edition::load_image()
 
 void Vispurple__tfg_edition::export_report()
 {
+    update_accessibility_index();
+    
     report.add_protanopia_comments(ui.protanopiaObservations->toPlainText().toStdString());
     report.add_deuteranopia_comments(ui.deuteranopiaObservations->toPlainText().toStdString());
     report.add_tritanopia_comments(ui.tritanopiaObservations->toPlainText().toStdString());
+    report.add_achromatopsia_comments(ui.achromatopsiaObservations->toPlainText().toStdString());
+    report.add_protanopia_comments(ui.protanopiaObservations->toPlainText().toStdString());
+    report.add_deuteranopia_comments(ui.deuteranopiaObservations->toPlainText().toStdString());
+    report.add_tritanopia_comments(ui.tritanopiaObservations->toPlainText().toStdString());
+    report.add_achromatopsia_comments(ui.achromatopsiaObservations->toPlainText().toStdString());
 
-    update_accessibility_index();
 
-    std::string dir = QFileDialog::getExistingDirectory(this, tr("Open Directory"),
-        "C:/",
+    std::string dir = QFileDialog::getExistingDirectory(this, tr("Select folder"),
+        "./",
         QFileDialog::ShowDirsOnly
         | QFileDialog::DontResolveSymlinks).toStdString();
 
@@ -145,15 +180,52 @@ void Vispurple__tfg_edition::update_accessibility_index()
     ui.protanopiaIndexLabel->setText(report.get_protanopia_accessibility_index().c_str());
     ui.deuteranopiaIndexLabel->setText(report.get_deuteranopia_accessibility_index().c_str());
     ui.tritanopiaIndexLabel->setText(report.get_tritanopia_accessibility_index().c_str());
-    ui.achromatopsiaIndexLabel->setText()
+    ui.achromatopsiaIndexLabel->setText(report.get_achromatopsia_accessibility_index().c_str());
+    ui.protanomalyIndexLabel->setText(report.get_protanomaly_accessibility_index().c_str());
+    ui.deuteranomalyIndexLabel->setText(report.get_deuteranomaly_accessibility_index().c_str());
+    ui.tritanomalyIndexLabel->setText(report.get_tritanomaly_accessibility_index().c_str());
+    ui.achromatomalyIndexLabel->setText(report.get_achromatomaly_accessibility_index().c_str());
 
     ui.protanopiaLabel->setPixmap(QPixmap::fromImage(report.get_protanopia_sobel()->convert_to_qimage().scaled(ui.protanopiaLabel->width(), ui.protanopiaLabel->height(), Qt::KeepAspectRatio)));
     ui.deuteranopiaLabel->setPixmap(QPixmap::fromImage(report.get_deuteranopia_sobel()->convert_to_qimage().scaled(ui.deuteranopiaLabel->width(), ui.deuteranopiaLabel->height(), Qt::KeepAspectRatio)));
     ui.tritanopiaLabel->setPixmap(QPixmap::fromImage(report.get_tritanopia_sobel()->convert_to_qimage().scaled(ui.tritanopiaLabel->width(), ui.tritanopiaLabel->height(), Qt::KeepAspectRatio)));
+    ui.achromatopsiaLabel->setPixmap(QPixmap::fromImage(report.get_achromatopsia_sobel()->convert_to_qimage().scaled(ui.achromatopsiaLabel->width(), ui.achromatopsiaLabel->height(), Qt::KeepAspectRatio)));
+    ui.protanomalyLabel->setPixmap(QPixmap::fromImage(report.get_protanomaly_sobel()->convert_to_qimage().scaled(ui.protanomalyLabel->width(), ui.protanomalyLabel->height(), Qt::KeepAspectRatio)));
+    ui.deuteranomalyLabel->setPixmap(QPixmap::fromImage(report.get_deuteranomaly_sobel()->convert_to_qimage().scaled(ui.deuteranomalyLabel->width(), ui.deuteranomalyLabel->height(), Qt::KeepAspectRatio)));
+    ui.tritanomalyLabel->setPixmap(QPixmap::fromImage(report.get_tritanomaly_sobel()->convert_to_qimage().scaled(ui.tritanomalyLabel->width(), ui.tritanomalyLabel->height(), Qt::KeepAspectRatio)));
+    ui.achromatomalyLabel->setPixmap(QPixmap::fromImage(report.get_achromatomaly_sobel()->convert_to_qimage().scaled(ui.achromatomalyLabel->width(), ui.achromatomalyLabel->height(), Qt::KeepAspectRatio)));
     
  }
 
 void Vispurple__tfg_edition::simulate()
+{   
+    ui.previsualizationLabel->setPixmap(QPixmap::fromImage(obtain_current_image().convert_to_qimage()).scaled(ui.previsualizationLabel->width(), ui.previsualizationLabel->height(), Qt::KeepAspectRatio));
+}
+
+void Vispurple__tfg_edition::save_image()
+{
+    Image aux = obtain_current_image();
+
+    std::string dir = QFileDialog::getExistingDirectory(this, tr("Select folder"),
+        "./",
+        QFileDialog::ShowDirsOnly
+        | QFileDialog::DontResolveSymlinks).toStdString();
+
+    time_t rawtime;
+    struct tm* timeinfo;
+    char buffer[80];
+
+    time(&rawtime);
+    timeinfo = localtime(&rawtime);
+
+    strftime(buffer, sizeof(buffer), "%d%m%Y_%H%M%S", timeinfo);
+    std::string str(buffer);
+    
+    aux.export_image(dir + "/" + str + "_image.png");
+}
+
+
+Image Vispurple__tfg_edition::obtain_current_image()
 {
     Image aux(*original);
 
@@ -188,18 +260,20 @@ void Vispurple__tfg_edition::simulate()
     else if (ui.achromatomalySimulation->isChecked())
     {
         aux.simulate_achromatomaly();
-    }    
+    }
+    else if (ui.protanopiaCorrection->isChecked())
+    {
+        aux.correct_protanopia();
+    }
+    else if (ui.deuteranopiaCorrection->isChecked())
+    {
+        aux.correct_deuteranopia();
+    }
 
     if (ui.edgeDetectionCheck->isChecked())
     {
         aux.sobel_colour();
     }
 
-    ui.previsualizationLabel->setPixmap(QPixmap::fromImage(aux.convert_to_qimage()).scaled(ui.previsualizationLabel->width(), ui.previsualizationLabel->height(), Qt::KeepAspectRatio));
-
-}
-
-void Vispurple__tfg_edition::save_image()
-{
-
+    return aux;
 }

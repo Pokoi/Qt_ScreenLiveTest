@@ -230,6 +230,52 @@ void Pixel::correct_deuteranopia()
 }
 
 
+void Pixel::correct_protanopia()
+{
+    float w1 = -0.582141f * 1.180608f;
+    float w2 = -3.606830f * 1.180608f;
+    float w3 = -1.198004f * 1.180608f;
+    float w4 = -0.582141f * -1.580401f;
+    float w5 = -3.606830f * -1.580401f;
+    float w6 = -1.198004f * -1.580401f;
+    float w7 = -0.582141f * 0.002899f;
+    float w8 = -3.606830f * 0.002899f;
+    float w9 = -1.198004f * 0.002899f;
+
+    convert_rgb_to_luv();
+
+    float r = rgb_components.red;
+    float g = rgb_components.green;
+    float b = rgb_components.blue;
+
+    float l = luv_components.l;
+    float u = luv_components.u;
+    float v = luv_components.v;
+
+    float Li = l * w1 + u * w2 + v * w3;
+    float Ui = l * w4 + u * w5 + v * w6;
+    float Vi = l * w7 + u * w8 + v * w9;
+
+    luv_components.l = Li;
+    luv_components.u = Ui;
+    luv_components.v = Vi;
+
+    convert_luv_to_rgb();
+
+    float Ri = rgb_components.red;
+    float Gi = rgb_components.green;
+    float Bi = rgb_components.blue;
+
+    float Rm = (Ri + r);
+    float Gm = (Gi + g);
+    float Bm = (Bi + b) + Ri;
+
+    rgb_components.red = Rm < 0.f ? 0.f : Rm > 1.f ? 1.f : Rm;
+    rgb_components.green = Gm < 0.f ? 0.f : Gm > 1.f ? 1.f : Gm;
+    rgb_components.blue = Bm < 0.f ? 0.f : Bm > 1.f ? 1.f : Bm;
+}
+
+
 void Pixel::convert_rgb_to_xyz(float* buffer)
 {
     buffer[0] = (0.430574f) * rgb_components.red + (0.341550f) * rgb_components.green + (0.178325f) * rgb_components.blue;

@@ -422,3 +422,19 @@ float Image::compare(Image& other)
 
     return 100 * abs( 1 - (index / other_max));
 }
+
+void Image::correct_protanopia()
+{
+    for (auto& pixel : pixels)
+    {
+        pixel.correct_protanopia();
+    }
+}
+
+void Image::correct_deuteranopia()
+{
+    for (auto& pixel : pixels)
+    {
+        pixel.correct_deuteranopia();
+    }
+}

@@ -1,4 +1,7 @@
 ﻿  uic ..\..\resources\vispurple__tfg_edition.ui
+  moc ..\..\code\headers\vispurple__tfg_edition.h
+  Image.cpp
+  Pixel.cpp
   Report.cpp
   main.cpp
   vispurple__tfg_edition.cpp
