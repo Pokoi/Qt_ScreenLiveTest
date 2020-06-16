@@ -158,10 +158,10 @@ void Vispurple__tfg_edition::export_report()
     report.add_deuteranopia_comments(ui.deuteranopiaObservations->toPlainText().toStdString());
     report.add_tritanopia_comments(ui.tritanopiaObservations->toPlainText().toStdString());
     report.add_achromatopsia_comments(ui.achromatopsiaObservations->toPlainText().toStdString());
-    report.add_protanopia_comments(ui.protanopiaObservations->toPlainText().toStdString());
-    report.add_deuteranopia_comments(ui.deuteranopiaObservations->toPlainText().toStdString());
-    report.add_tritanopia_comments(ui.tritanopiaObservations->toPlainText().toStdString());
-    report.add_achromatopsia_comments(ui.achromatopsiaObservations->toPlainText().toStdString());
+    report.add_protanomaly_comments(ui.protanomalyObservations->toPlainText().toStdString());
+    report.add_deuteranomaly_comments(ui.deuteranomalyObservations->toPlainText().toStdString());
+    report.add_tritanomaly_comments(ui.tritanomalyObservations->toPlainText().toStdString());
+    report.add_achromatomaly_comments(ui.achromatomalyObservations->toPlainText().toStdString());  
 
 
     std::string dir = QFileDialog::getExistingDirectory(this, tr("Select folder"),
@@ -169,7 +169,7 @@ void Vispurple__tfg_edition::export_report()
         QFileDialog::ShowDirsOnly
         | QFileDialog::DontResolveSymlinks).toStdString();
 
-    report.export_to((dir + "report.pdf").c_str());
+    report.export_to((dir + "/report.pdf").c_str());
 }
 
 void Vispurple__tfg_edition::update_accessibility_index()

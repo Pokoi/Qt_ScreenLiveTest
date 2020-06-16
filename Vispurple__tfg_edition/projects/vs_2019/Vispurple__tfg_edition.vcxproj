@@ -83,13 +83,27 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>../../code/headers;$(Qt_INCLUDEPATH_);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../../code/headers;../../../BackProject/code/headers;$(Qt_INCLUDEPATH_);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
+    <QtMoc>
+      <QtMocDir>$(IntDir)\moc\</QtMocDir>
+    </QtMoc>
+    <Link>
+      <AdditionalLibraryDirectories>$(Platform)/$(Configuration);$(Configuration);$(Qt_LIBPATH_);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>Library.lib;$(Qt_LIBS_);%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>../../code/headers;$(Qt_INCLUDEPATH_);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../../code/headers;../../../BackProject/code/headers;$(Qt_INCLUDEPATH_);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
+    <QtMoc>
+      <QtMocDir>$(IntDir)\moc\</QtMocDir>
+    </QtMoc>
+    <Link>
+      <AdditionalLibraryDirectories>$(Platform)/$(Configuration);$(Configuration);$(Qt_LIBPATH_);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>Library.lib;$(Qt_LIBS_);%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
     <QtRcc Include="vispurple__tfg_edition.qrc" />
@@ -98,21 +112,11 @@
     <QtUic Include="..\..\resources\vispurple__tfg_edition.ui" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\code\sources\Image.cpp" />
     <ClCompile Include="..\..\code\sources\main.cpp" />
-    <ClCompile Include="..\..\code\sources\Pixel.cpp" />
-    <ClCompile Include="..\..\code\sources\Report.cpp" />
-    <ClCompile Include="..\..\code\sources\ScreenMedia.cpp" />
     <ClCompile Include="..\..\code\sources\vispurple__tfg_edition.cpp" />
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="..\..\code\headers\vispurple__tfg_edition.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="..\..\code\headers\Image.hpp" />
-    <ClInclude Include="..\..\code\headers\Pixel.hpp" />
-    <ClInclude Include="..\..\code\headers\Report.hpp" />
-    <ClInclude Include="..\..\code\headers\ScreenMedia.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">

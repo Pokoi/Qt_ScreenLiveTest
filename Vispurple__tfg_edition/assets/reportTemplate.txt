@@ -12,48 +12,48 @@
 </tr>
 <tr>
 <td style="width: 185px;">Original Image to analyze</td>
-<td style="width: 185px;"><img src="originalSource" alt="" width="100" height="100" /></td>
-<td style="width: 187px;"><img src="originalSobelSource" alt="" width="100" height="100" /></td>
+<td style="width: 185px;"><img src="originalSource" alt=""  height="100" /></td>
+<td style="width: 187px;"><img src="originalSobelSource" alt=""  height="100" /></td>
 </tr>
 <tr>
 <td style="width: 185px;">Protanopia simulation</td>
-<td style="width: 185px;"><img src="protanopiaSource" alt="" width="100" height="100" /></td>
-<td style="width: 187px;"><img src="protanopiaSobelSource" alt="" width="100" height="100" /></td>
+<td style="width: 185px;"><img src="protanopiaSource" alt=""  height="100" /></td>
+<td style="width: 187px;"><img src="protanopiaSobelSource" alt=""  height="100" /></td>
 </tr>
 <tr>
 <td style="width: 185px;">Deuteranopia simulation</td>
-<td style="width: 185px;"><img src="deuteranopiaSource" alt="" width="100" height="100" /></td>
-<td style="width: 187px;"><img src="deuteranopiaSobelSource" alt="" width="100" height="100" /></td>
+<td style="width: 185px;"><img src="deuteranopiaSource" alt=""  height="100" /></td>
+<td style="width: 187px;"><img src="deuteranopiaSobelSource" alt=""  height="100" /></td>
 </tr>
 <tr>
 <td style="width: 185px;">Tritanopia simulation</td>
-<td style="width: 185px;"><img src="tritanopiaSource" alt="" width="100" height="100" /></td>
-<td style="width: 187px;"><img src="tritanopiaSobelSource" alt="" width="100" height="100" /></td>
+<td style="width: 185px;"><img src="tritanopiaSource" alt=""  height="100" /></td>
+<td style="width: 187px;"><img src="tritanopiaSobelSource" alt=""  height="100" /></td>
 </tr>
 <tr>
 <td style="width: 185px;">Achromatopsia simulation</td>
-<td style="width: 185px;"><img src="achromatopsiaSource" alt="" width="100" height="100" /></td>
-<td style="width: 187px;"><img src="achromatopsiaSobelSource" alt="" width="100" height="100" /></td>
+<td style="width: 185px;"><img src="achromatopsiaSource" alt=""  height="100" /></td>
+<td style="width: 187px;"><img src="achromatopsiaSobelSource" alt=""  height="100" /></td>
 </tr>
 <tr>
 <td style="width: 185px;">Protanomaly simulation</td>
-<td style="width: 185px;"><img src="protanomalySource" alt="" width="100" height="100" /></td>
-<td style="width: 187px;"><img src="protanomalySobelSource" alt="" width="100" height="100" /></td>
+<td style="width: 185px;"><img src="protanomalySource" alt=""  height="100" /></td>
+<td style="width: 187px;"><img src="protanomalySobelSource" alt=""  height="100" /></td>
 </tr>
 <tr>
 <td style="width: 185px;">Deuteranomaly simulation</td>
-<td style="width: 185px;"><img src="deuteranomalySource" alt="" width="100" height="100" /></td>
-<td style="width: 187px;"><img src="deuteranomalySobelSource" alt="" width="100" height="100" /></td>
+<td style="width: 185px;"><img src="deuteranomalySource" alt=""  height="100" /></td>
+<td style="width: 187px;"><img src="deuteranomalySobelSource" alt=""  height="100" /></td>
 </tr>
 <tr>
 <td style="width: 185px;">Tritanomaly simulation</td>
-<td style="width: 185px;"><img src="tritanomalySource" alt="" width="100" height="100" /></td>
-<td style="width: 187px;"><img src="tritanomalySobelSource" alt="" width="100" height="100" /></td>
+<td style="width: 185px;"><img src="tritanomalySource" alt=""  height="100" /></td>
+<td style="width: 187px;"><img src="tritanomalySobelSource" alt=""  height="100" /></td>
 </tr>
 <tr>
 <td style="width: 185px;">Achromatomaly simulation</td>
-<td style="width: 185px;"><img src="achromatomalySource" alt="" width="100" height="100" /></td>
-<td style="width: 187px;"><img src="achromatomalySobelSource" alt="" width="100" height="100" /></td>
+<td style="width: 185px;"><img src="achromatomalySource" alt=""  height="100" /></td>
+<td style="width: 187px;"><img src="achromatomalySobelSource" alt=""  height="100" /></td>
 </tr>
 </tbody>
 </table>
