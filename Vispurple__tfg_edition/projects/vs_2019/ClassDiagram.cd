@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="NameAndType">
+  <Class Name="Vispurple__tfg_edition">
+    <Position X="1.5" Y="1" Width="4.25" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Enum Name="Vispurple__tfg_edition::TOOL_MODES">
+        <TypeIdentifier>
+          <NewMemberFileName>D:\Repositorios\Vispurple\Vispurple__tfg_edition\code\headers\vispurple__tfg_edition.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+      <Enum Name="Vispurple__tfg_edition::VISUALIZATION">
+        <TypeIdentifier>
+          <NewMemberFileName>D:\Repositorios\Vispurple\Vispurple__tfg_edition\code\headers\vispurple__tfg_edition.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>EAQEJghAAAAAEAAAAAAAAEBKIQAAAAAAAAAABAAAAQA=</HashCode>
+      <FileName>D:\Repositorios\Vispurple\Vispurple__tfg_edition\code\headers\vispurple__tfg_edition.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

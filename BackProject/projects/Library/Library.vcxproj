@@ -109,6 +109,9 @@
     <ClCompile Include="..\..\code\sources\Report.cpp" />
     <ClCompile Include="..\..\code\sources\ScreenMedia.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram.cd" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">
     <Import Project="$(QtMsBuild)\qt.targets" />

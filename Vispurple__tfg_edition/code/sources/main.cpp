@@ -32,6 +32,7 @@
 
 int main(int argc, char *argv[])
 {
+    MessageBox(NULL, L"prueba", L"prueba", MB_OK);
     QApplication a(argc, argv);
     Vispurple__tfg_edition w;
     w.show();
