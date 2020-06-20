@@ -1,0 +1,26 @@
+var searchData=
+[
+  ['get_5fachromatomaly_5faccessibility_5findex_32',['get_achromatomaly_accessibility_index',['../class_report.html#aece2f77a403e31b4909cf3fb5e1accfd',1,'Report']]],
+  ['get_5fachromatomaly_5fsobel_33',['get_achromatomaly_sobel',['../class_report.html#a6b1bbffdccb8c0084157765ff4b19f6e',1,'Report']]],
+  ['get_5fachromatopsia_5faccessibility_5findex_34',['get_achromatopsia_accessibility_index',['../class_report.html#abf5e29c0ada23cd3f213849a9cd395b0',1,'Report']]],
+  ['get_5fachromatopsia_5fsobel_35',['get_achromatopsia_sobel',['../class_report.html#a8549991b2f3ea68f9ed06216a9095c9c',1,'Report']]],
+  ['get_5fdeuteranomaly_5faccessibility_5findex_36',['get_deuteranomaly_accessibility_index',['../class_report.html#a0a5b9ecd053217eec53047aff4e5cef1',1,'Report']]],
+  ['get_5fdeuteranomaly_5fsobel_37',['get_deuteranomaly_sobel',['../class_report.html#ad41c44aac08116337e2f94769f3e26d6',1,'Report']]],
+  ['get_5fdeuteranopia_5faccessibility_5findex_38',['get_deuteranopia_accessibility_index',['../class_report.html#ad49dcc1a57329623cbd1e9cbe9075178',1,'Report']]],
+  ['get_5fdeuteranopia_5fsobel_39',['get_deuteranopia_sobel',['../class_report.html#af26b85a1210e42509e9fcd223af30694',1,'Report']]],
+  ['get_5fheight_40',['get_height',['../class_image.html#a8523261c132968d3054bdbe62030000a',1,'Image']]],
+  ['get_5fpixel_41',['get_pixel',['../class_image.html#a02310d92b3127bb1ec97e1cd706acd20',1,'Image::get_pixel(uint16_t index)'],['../class_image.html#a84da289866aa8d5be41c636fd87fe9dd',1,'Image::get_pixel(uint16_t x, uint16_t y)']]],
+  ['get_5fpixels_42',['get_pixels',['../class_image.html#a76872be15809e3f135e4adf3b7060175',1,'Image']]],
+  ['get_5fprotanomaly_5faccessibility_5findex_43',['get_protanomaly_accessibility_index',['../class_report.html#ae29a0e7a4bb03bf67715ca9816d4d9b2',1,'Report']]],
+  ['get_5fprotanomaly_5fsobel_44',['get_protanomaly_sobel',['../class_report.html#a227184caa729b9158593b6598b7a8a5b',1,'Report']]],
+  ['get_5fprotanopia_5faccessibility_5findex_45',['get_protanopia_accessibility_index',['../class_report.html#ac5a5da697463d3f8e42a2c76a67a45aa',1,'Report']]],
+  ['get_5fprotanopia_5fsobel_46',['get_protanopia_sobel',['../class_report.html#a0b9c461e280f8647445f10e57890875b',1,'Report']]],
+  ['get_5frender_5fpixmap_47',['get_render_pixmap',['../class_screen_media.html#a2191e5725b2e070933853d6a9e15b7ff',1,'ScreenMedia']]],
+  ['get_5ftritanomaly_5faccessibility_5findex_48',['get_tritanomaly_accessibility_index',['../class_report.html#a88d17630fe413767c16ddb940abc7e18',1,'Report']]],
+  ['get_5ftritanomaly_5fsobel_49',['get_tritanomaly_sobel',['../class_report.html#aa9a144cabcb3e30bc63c7e77e015b5f8',1,'Report']]],
+  ['get_5ftritanopia_5faccessibility_5findex_50',['get_tritanopia_accessibility_index',['../class_report.html#a3a03521b7b6def5390d590150162cd07',1,'Report']]],
+  ['get_5ftritanopia_5fsobel_51',['get_tritanopia_sobel',['../class_report.html#a1b3a139b9041e86480ee727531a50bd7',1,'Report']]],
+  ['get_5fwidth_52',['get_width',['../class_image.html#a4e848d6daa25b8e1f4ddee7c1b67739c',1,'Image']]],
+  ['get_5fwindows_5fnames_53',['get_windows_names',['../class_screen_media.html#a9deacc8632b27a5022ecf33cb59ecf5d',1,'ScreenMedia']]],
+  ['green_54',['green',['../struct_pixel_1_1_r_g_b.html#a382cb2747753c79bf6a05bef89e46942',1,'Pixel::RGB']]]
+];

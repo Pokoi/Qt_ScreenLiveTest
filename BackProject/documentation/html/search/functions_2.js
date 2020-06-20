@@ -1,0 +1,20 @@
+var searchData=
+[
+  ['capture_123',['capture',['../class_screen_media.html#a4fdadf08a86380061d5d6afcccda1731',1,'ScreenMedia']]],
+  ['clamp_124',['clamp',['../class_pixel.html#a0f688e7659aaa3002ed9f8684c612eee',1,'Pixel']]],
+  ['colour_5fdifference_125',['colour_difference',['../class_image.html#a769e54fd33bcd0b930c0adf351c107ab',1,'Image']]],
+  ['compare_126',['compare',['../class_image.html#aacc53f3df85dcfe71b58e91cad5dbc9a',1,'Image']]],
+  ['convert_5fluv_5fto_5frgb_127',['convert_luv_to_rgb',['../class_pixel.html#a5d035e49be49dee326a35da62027bf3f',1,'Pixel']]],
+  ['convert_5frgb_5fto_5fluv_128',['convert_rgb_to_luv',['../class_pixel.html#ae8a55e36f301021955d2849be51a384d',1,'Pixel']]],
+  ['convert_5frgb_5fto_5fxyz_129',['convert_rgb_to_xyz',['../class_pixel.html#a4544d5f9981c222e57abec18bedfa807',1,'Pixel']]],
+  ['convert_5fto_5fqimage_130',['convert_to_qimage',['../class_image.html#a59f0946bbfd827c7984276dd991c9409',1,'Image']]],
+  ['convert_5fxyz_5fto_5fluv_131',['convert_xyz_to_luv',['../class_pixel.html#aa6bf584b00e51606130d0cbb083efd92',1,'Pixel']]],
+  ['convert_5fxyz_5fto_5frgb_132',['convert_xyz_to_rgb',['../class_pixel.html#a84334dbb5a38033bbb81ce1d110f6591',1,'Pixel']]],
+  ['convert_5fxyz_5fto_5fxyzd_133',['convert_xyz_to_xyzd',['../class_pixel.html#a968159c0f4dd4f1ae883579430e62c9a',1,'Pixel']]],
+  ['convert_5fxyz_5fto_5fxyzp_134',['convert_xyz_to_xyzp',['../class_pixel.html#a6a99fe567ed4983a9fc6963a725a0095',1,'Pixel']]],
+  ['convert_5fxyz_5fto_5fxyzs_135',['convert_xyz_to_xyzs',['../class_pixel.html#a1c29a4a4660e1ad25269ec747cc89b59',1,'Pixel']]],
+  ['convert_5fxyz_5fto_5fxyzt_136',['convert_xyz_to_xyzt',['../class_pixel.html#a7e4fed26245312134c2c924f63305377',1,'Pixel']]],
+  ['correct_5fdeuteranopia_137',['correct_deuteranopia',['../class_image.html#a02c666148eeb09f4bd7e25014735b1c1',1,'Image::correct_deuteranopia()'],['../class_pixel.html#a8af909d13ad8413a02a7c213aaaa50f3',1,'Pixel::correct_deuteranopia()']]],
+  ['correct_5fprotanopia_138',['correct_protanopia',['../class_image.html#ad3062ed775fcdc313f8f5f706114b8b1',1,'Image::correct_protanopia()'],['../class_pixel.html#a439e30ae82aa7a40e94ea792cd80efac',1,'Pixel::correct_protanopia()']]],
+  ['correct_5ftritanopia_139',['correct_tritanopia',['../class_pixel.html#a119fceb6200a4b4ae807e0f7121dcb62',1,'Pixel']]]
+];

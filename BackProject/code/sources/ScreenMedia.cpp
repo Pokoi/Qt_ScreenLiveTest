@@ -1,4 +1,3 @@
-#include "..\headers\ScreenMedia.hpp"
 /*
  * File: ScreenMedia.cpp
  * File Created: 13th June 2020
@@ -28,6 +27,7 @@
  * SOFTWARE.
  */
 
+#include <ScreenMedia.hpp>
 
 void ScreenMedia::capture()
 {

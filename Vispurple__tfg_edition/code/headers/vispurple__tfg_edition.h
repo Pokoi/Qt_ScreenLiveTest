@@ -58,6 +58,11 @@ class Vispurple__tfg_edition : public QMainWindow
     std::shared_ptr<QTimer> timer;
 
 public:
+
+    /**
+    @brief Creates an instance
+    @param parent The widget parent
+    */
     Vispurple__tfg_edition(QWidget* parent = Q_NULLPTR);
     
 
@@ -67,27 +72,57 @@ private:
 
 private slots:
     
+    /**
+    @brief Update the window events
+    */
     void update();
 
+    /**
+    @brief Sets the frame rate
+    */
     void set_delta_time();    
 
+    /**
+    @brief Load an image from the system
+    */
     void load_image();
 
+    /**
+    @brief Exports the accessibility report to the system
+    */
     void export_report();
 
+    /**
+    @brief Update the available windows of the system
+    */
     void update_available_windows();
 
+    /**
+    @brief Select a window to preview
+    */
     void select_current_window();
 
+    /**
+    @brief Updates the visual accessibility
+    */
     void update_accessibility_index();
 
+    /**
+    @brief Simulate the selected 
+    */
     void simulate();
 
+    /**
+    @brief Saves the current previsualization as image
+    */
     void save_image();
     
 
 private:
 
+    /**
+    @brief Obtain the previsualization image
+    */
     Image obtain_current_image();
    
 };
